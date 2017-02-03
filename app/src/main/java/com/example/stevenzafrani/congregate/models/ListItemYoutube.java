@@ -1,5 +1,6 @@
 package com.example.stevenzafrani.congregate.models;
 
 
-public class YoutubeItem {
+public class ListItemYoutube {
+
 }
