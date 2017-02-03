@@ -1,7 +1,9 @@
-package com.example.stevenzafrani.congregate;
+package com.example.stevenzafrani.congregate.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.stevenzafrani.congregate.R;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -10,4 +12,5 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_home);
     }
+
 }
