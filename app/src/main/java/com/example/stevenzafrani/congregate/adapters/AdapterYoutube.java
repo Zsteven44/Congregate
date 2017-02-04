@@ -1,13 +1,18 @@
 package com.example.stevenzafrani.congregate.adapters;
 
 
+import android.content.pm.PackageManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import com.example.stevenzafrani.congregate.R;
 
 public class AdapterYoutube extends RecyclerView.Adapter<AdapterYoutube.ViewHolder> {
 
+    public AdapterYoutube(PackageManager packageManager) {
 
+    }
 
     @Override
     public AdapterYoutube.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -27,10 +32,12 @@ public class AdapterYoutube extends RecyclerView.Adapter<AdapterYoutube.ViewHold
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public TextView mTextView;
-        public ViewHolder(TextView v) {
+        public String thumbnailDefault;
+
+        public ViewHolder(View v) {
             super(v);
-            mTextView = v;
+            thumbnailDefault = (View) v.findViewById(R.id.placeholder_youtube);
+
         }
     }
 }

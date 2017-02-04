@@ -46,9 +46,9 @@ public class HomeFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView_youtube);
 
-        linearLayoutManager = new LinearLayoutManager(getContext(), 1, false);
+        linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapterYoutube = new AdapterYoutube();
+        adapterYoutube = new AdapterYoutube(getActivity().getPackageManager());
         recyclerView.setAdapter(adapterYoutube);
 
 
