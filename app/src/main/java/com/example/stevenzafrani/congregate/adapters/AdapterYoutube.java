@@ -8,14 +8,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.stevenzafrani.congregate.R;
 import com.example.stevenzafrani.congregate.models.YoutubeVideo;
+import com.google.android.youtube.player.YouTubePlayerSupportFragment;
+import com.squareup.picasso.Picasso;
 
 public class AdapterYoutube extends RecyclerView.Adapter<AdapterYoutube.ViewHolder> {
-    private YoutubeVideo[] youtubeVideos;
     private static int ITEM_TYPE = 1;
+    private YoutubeVideo[] youtubeVideos;
+    public YouTubePlayerSupportFragment youtubeFragment;
+
+
     public AdapterYoutube(PackageManager packageManager, YoutubeVideo[] videos) {
         this.youtubeVideos = videos;
     }
@@ -25,7 +31,9 @@ public class AdapterYoutube extends RecyclerView.Adapter<AdapterYoutube.ViewHold
     }
     @Override
     public AdapterYoutube.YoutubeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new YoutubeViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_youtube, parent, false));
+        return new YoutubeViewHolder(LayoutInflater
+                .from(parent.getContext())
+                .inflate(R.layout.recycler_youtube, parent, false));
     }
 
     @Override
@@ -58,13 +66,19 @@ public class AdapterYoutube extends RecyclerView.Adapter<AdapterYoutube.ViewHold
         private TextView descriptionTextView;
         private TextView idTextView;
         private TextView linkTextView;
+        private ImageView thumbnailImageView;
+
 
         public YoutubeViewHolder(View v) {
             super(v);
+
+
+
             titleTextView = (TextView) v.findViewById(R.id.recyclerview_youtube_title);
             descriptionTextView = (TextView) v.findViewById(R.id.recyclerview_youtube_description);
             idTextView = (TextView) v.findViewById(R.id.recyclerview_youtube_id);
             linkTextView = (TextView) v.findViewById(R.id.recyclerview_youtube_link);
+            thumbnailImageView = (ImageView) v.findViewById(R.id.recyclerView_thumbnail_img);
         }
 
         @Override
@@ -75,6 +89,8 @@ public class AdapterYoutube extends RecyclerView.Adapter<AdapterYoutube.ViewHold
                 descriptionTextView.setText(video.getDescription());
                 linkTextView.setText(video.getLink());
                 idTextView.setText(video.getId());
+                Picasso.with(thumbnailImageView.getContext()).load(video.getStandardThumb()).into(thumbnailImageView);
+
             } catch (NullPointerException e) {
                 Log.v(AdapterYoutube.class.getSimpleName(), "error in retrieving video data.");
             }
