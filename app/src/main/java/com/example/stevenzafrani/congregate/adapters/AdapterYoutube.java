@@ -4,6 +4,7 @@ package com.example.stevenzafrani.congregate.adapters;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,9 @@ public class AdapterYoutube extends RecyclerView.Adapter<AdapterYoutube.ViewHold
         this.youtubeVideos = videos;
     }
 
+    public void setData(YoutubeVideo[] videos) {
+        this.youtubeVideos = videos;
+    }
     @Override
     public AdapterYoutube.YoutubeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new YoutubeViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_youtube, parent, false));
@@ -26,7 +30,7 @@ public class AdapterYoutube extends RecyclerView.Adapter<AdapterYoutube.ViewHold
 
     @Override
     public void onBindViewHolder(AdapterYoutube.ViewHolder holder, int position) {
-
+        holder.bind(position);
     }
 
     @Override
@@ -66,10 +70,14 @@ public class AdapterYoutube extends RecyclerView.Adapter<AdapterYoutube.ViewHold
         @Override
         protected void bind(int position) {
             final YoutubeVideo video = youtubeVideos[position];
-            titleTextView.setText(video.getTitle());
-            descriptionTextView.setText(video.getDescription());
-            linkTextView.setText(video.getLink());
-            idTextView.setText(video.getId());
+            try {
+                titleTextView.setText(video.getTitle());
+                descriptionTextView.setText(video.getDescription());
+                linkTextView.setText(video.getLink());
+                idTextView.setText(video.getId());
+            } catch (NullPointerException e) {
+                Log.v(AdapterYoutube.class.getSimpleName(), "error in retrieving video data.");
+            }
         }
 
 

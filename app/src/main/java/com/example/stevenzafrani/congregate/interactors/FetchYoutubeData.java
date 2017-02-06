@@ -4,7 +4,6 @@ package com.example.stevenzafrani.congregate.interactors;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.stevenzafrani.congregate.adapters.AdapterYoutube;
 import com.example.stevenzafrani.congregate.configs.config;
@@ -20,8 +19,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 public class FetchYoutubeData extends AsyncTask<String, Void, YoutubeVideo[]> {
     private final String LOG_TAG = FetchYoutubeData.class.getSimpleName();
@@ -31,6 +28,7 @@ public class FetchYoutubeData extends AsyncTask<String, Void, YoutubeVideo[]> {
 
     public FetchYoutubeData(AdapterYoutube adapter) {
         this.adapterYoutube = adapter;
+        Log.v(LOG_TAG, "FetchYoutubeData created.");
     }
 
     public YoutubeVideo[] getYoutubeDataFromJSON(String dataJsonString) throws JSONException {
@@ -46,8 +44,10 @@ public class FetchYoutubeData extends AsyncTask<String, Void, YoutubeVideo[]> {
         String OWM_MEDIUM = "medium";
         String OWM_HIGH = "high";
         String OWM_STANDARD = "standard";
+        String OWM_THUMBNAIL_URL = "url";
 
         JSONObject jsonObject = new JSONObject(dataJsonString);
+        Log.v(LOG_TAG, "Reiterate the jsonObject: " + jsonObject.toString());
         JSONArray jsonArray = jsonObject.getJSONArray(OWM_ITEMS);
         YoutubeVideo[] youtubeItems = new YoutubeVideo[jsonArray.length()];
         for (int i =0; i<jsonArray.length();i++) {
@@ -60,15 +60,21 @@ public class FetchYoutubeData extends AsyncTask<String, Void, YoutubeVideo[]> {
             String videoThumbnailHigh;
             String videoThumbnailStandard;
             JSONObject videoItem = jsonArray.getJSONObject(i);
-
-            videoTitle              = videoItem.getString(OWM_TITLE);
-            videoDescription        = videoItem.getString(OWM_DESCRIPTION);
+            Log.v(LOG_TAG, "THe json video indiividual item: " + videoItem.toString());
             videoId                 = videoItem.getString(OWM_ID);
-            videoLink               = videoItem.getString(OWM_LINK);
-            videoThumbnailDefault   = videoItem.getString(OWM_DEFAULT);
-            videoThumbnailMedium    = videoItem.getString(OWM_MEDIUM);
-            videoThumbnailHigh      = videoItem.getString(OWM_HIGH);
-            videoThumbnailStandard  = videoItem.getString(OWM_STANDARD);
+            Log.v(LOG_TAG, "The video id: " + videoId);
+            videoTitle              = videoItem.getJSONObject(OWM_SNIPPET).getString(OWM_TITLE);
+            Log.v(LOG_TAG, "The video title: " + videoTitle);
+            videoDescription        = videoItem.getJSONObject(OWM_SNIPPET).getString(OWM_DESCRIPTION);
+            Log.v(LOG_TAG, "The video Description: " + videoDescription);
+            videoLink               = "http://youtube.com/watch?v=" + videoId;
+            Log.v(LOG_TAG, "The video link: " + videoLink);
+
+
+            videoThumbnailDefault   = videoItem.getJSONObject(OWM_SNIPPET).getJSONObject(OWM_THUMBNAIL).getJSONObject(OWM_DEFAULT).getString(OWM_THUMBNAIL_URL);
+            videoThumbnailMedium    = videoItem.getJSONObject(OWM_SNIPPET).getJSONObject(OWM_THUMBNAIL).getJSONObject(OWM_MEDIUM).getString(OWM_THUMBNAIL_URL);
+            videoThumbnailHigh      = videoItem.getJSONObject(OWM_SNIPPET).getJSONObject(OWM_THUMBNAIL).getJSONObject(OWM_HIGH).getString(OWM_THUMBNAIL_URL);
+            videoThumbnailStandard  = videoItem.getJSONObject(OWM_SNIPPET).getJSONObject(OWM_THUMBNAIL).getJSONObject(OWM_STANDARD).getString(OWM_THUMBNAIL_URL);
 
 
 
@@ -88,7 +94,7 @@ public class FetchYoutubeData extends AsyncTask<String, Void, YoutubeVideo[]> {
         if (params.length ==0 ){
             return null;
         }
-
+        Log.v(LOG_TAG, "doInBackground running.");
         HttpURLConnection urlConnection = null;
         BufferedReader reader  =null;
 
@@ -137,7 +143,7 @@ public class FetchYoutubeData extends AsyncTask<String, Void, YoutubeVideo[]> {
                 return null;
             }
             dataJsonString = buffer.toString();
-            Log.v(LOG_TAG, "Movie String: " + dataJsonString);
+            Log.v(LOG_TAG, "JSON youtube video String: " + dataJsonString);
         } catch (IOException e) {
             Log.e(LOG_TAG, "Error ", e);
             return null;
@@ -181,19 +187,16 @@ public class FetchYoutubeData extends AsyncTask<String, Void, YoutubeVideo[]> {
     protected void onPostExecute(YoutubeVideo[] result) {
 
         if (result != null) {
-            adapterYoutube.;
-            for(YoutubeVideo vid : result) {
-                adapterYoutube.add(vid);
+            Log.v(LOG_TAG, result.toString());
+            adapterYoutube.setData(result);
 
-            }
-            movieAdapter.notifyDataSetChanged();
+
+            adapterYoutube.notifyDataSetChanged();
         } else {
-            CharSequence text = "There seems to be an error, please check your network connectivity.";
-            int duration = Toast.LENGTH_SHORT;
-            Toast.makeText(getActivity(), text, duration).show();
+            Log.v(LOG_TAG,"No data acquired for the recyclerview adapter from the youtube data.");
         }
 
     }
-    */
+
 
 }

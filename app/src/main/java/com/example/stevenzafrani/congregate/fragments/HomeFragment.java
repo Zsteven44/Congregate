@@ -4,25 +4,18 @@ package com.example.stevenzafrani.congregate.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.stevenzafrani.congregate.R;
 import com.example.stevenzafrani.congregate.adapters.AdapterYoutube;
-import com.example.stevenzafrani.congregate.configs.config;
 import com.example.stevenzafrani.congregate.interactors.FetchYoutubeData;
 import com.example.stevenzafrani.congregate.models.YoutubeVideo;
-import com.google.android.youtube.player.YouTubeInitializationResult;
-import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 
 public class HomeFragment extends Fragment {
     public String video_id = "EGy39OMyHzw";
@@ -60,11 +53,12 @@ public class HomeFragment extends Fragment {
 
 
 
-        // This needs to be moved to the youtube adapter binding.
+        /* This needs to be moved to the youtube adapter binding.
         YouTubePlayerSupportFragment youTubePlayerSupportFragment = YouTubePlayerSupportFragment.newInstance();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.placeholder_youtube, youTubePlayerSupportFragment).commit();
         youTubePlayerSupportFragment.initialize(config.YOUTUBE_API_KEY, new YouTubePlayer.OnInitializedListener() {
+
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored) {
                 if (!wasRestored) {
@@ -81,7 +75,7 @@ public class HomeFragment extends Fragment {
                 Log.d("errorMessage:", errorMessage);
             }
         });
-        // end of youtube adapter binding
+        */
 
 
 
@@ -101,9 +95,9 @@ public class HomeFragment extends Fragment {
     }
 
     public void updateVideos() {
-        FetchYoutubeData fetchYoutubeData = new FetchYoutubeData();
+        FetchYoutubeData fetchYoutubeData = new FetchYoutubeData(adapterYoutube);
 
-        fetchYoutubeData.execute(adapterYoutube);
+        fetchYoutubeData.execute("Hello");
 
     }
 }
