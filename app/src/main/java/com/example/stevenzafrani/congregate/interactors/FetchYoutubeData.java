@@ -4,7 +4,9 @@ package com.example.stevenzafrani.congregate.interactors;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.example.stevenzafrani.congregate.adapters.AdapterYoutube;
 import com.example.stevenzafrani.congregate.configs.config;
 import com.example.stevenzafrani.congregate.models.YoutubeVideo;
 
@@ -18,11 +20,18 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FetchYoutubeData extends AsyncTask<String, Void, YoutubeVideo[]> {
     private final String LOG_TAG = FetchYoutubeData.class.getSimpleName();
     public final int NUMBER_VIDEOS_RETURNED = 25;
+    AdapterYoutube adapterYoutube;
 
+
+    public FetchYoutubeData(AdapterYoutube adapter) {
+        this.adapterYoutube = adapter;
+    }
 
     public YoutubeVideo[] getYoutubeDataFromJSON(String dataJsonString) throws JSONException {
         String OWM_ITEMS = "items";
@@ -167,14 +176,14 @@ public class FetchYoutubeData extends AsyncTask<String, Void, YoutubeVideo[]> {
         super.onPreExecute();
     }
 
-    /*
+
     @Override
     protected void onPostExecute(YoutubeVideo[] result) {
 
         if (result != null) {
-            movieAdapter.clear();
-            for(Movie movie : result) {
-                movieAdapter.add(movie);
+            adapterYoutube.;
+            for(YoutubeVideo vid : result) {
+                adapterYoutube.add(vid);
 
             }
             movieAdapter.notifyDataSetChanged();

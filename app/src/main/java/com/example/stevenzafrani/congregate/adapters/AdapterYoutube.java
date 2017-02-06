@@ -2,21 +2,26 @@ package com.example.stevenzafrani.congregate.adapters;
 
 
 import android.content.pm.PackageManager;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.stevenzafrani.congregate.R;
+import com.example.stevenzafrani.congregate.models.YoutubeVideo;
 
 public class AdapterYoutube extends RecyclerView.Adapter<AdapterYoutube.ViewHolder> {
-
-    public AdapterYoutube(PackageManager packageManager) {
-
+    private YoutubeVideo[] youtubeVideos;
+    private static int ITEM_TYPE = 1;
+    public AdapterYoutube(PackageManager packageManager, YoutubeVideo[] videos) {
+        this.youtubeVideos = videos;
     }
 
     @Override
-    public AdapterYoutube.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+    public AdapterYoutube.YoutubeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new YoutubeViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_youtube, parent, false));
     }
 
     @Override
@@ -25,19 +30,49 @@ public class AdapterYoutube extends RecyclerView.Adapter<AdapterYoutube.ViewHold
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return ITEM_TYPE;
+    }
+
+    @Override
     public int getItemCount() {
-        return 0;
+        return youtubeVideos.length;
     }
 
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
-        public String thumbnailDefault;
+    abstract class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ViewHolder(View v) {
-            super(v);
-            thumbnailDefault = (View) v.findViewById(R.id.placeholder_youtube);
-
+        private ViewHolder(@NonNull final View itemView) {
+            super(itemView);
         }
+
+        protected abstract void bind(final int position);
     }
+
+    private class YoutubeViewHolder extends ViewHolder{
+        private TextView titleTextView;
+        private TextView descriptionTextView;
+        private TextView idTextView;
+        private TextView linkTextView;
+
+        public YoutubeViewHolder(View v) {
+            super(v);
+            titleTextView = (TextView) v.findViewById(R.id.recyclerview_youtube_title);
+            descriptionTextView = (TextView) v.findViewById(R.id.recyclerview_youtube_description);
+            idTextView = (TextView) v.findViewById(R.id.recyclerview_youtube_id);
+            linkTextView = (TextView) v.findViewById(R.id.recyclerview_youtube_link);
+        }
+
+        @Override
+        protected void bind(int position) {
+            final YoutubeVideo video = youtubeVideos[position];
+            titleTextView.setText(video.getTitle());
+            descriptionTextView.setText(video.getDescription());
+            linkTextView.setText(video.getLink());
+            idTextView.setText(video.getId());
+        }
+
+
+    }
+
 }

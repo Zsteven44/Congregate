@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.example.stevenzafrani.congregate.R;
 import com.example.stevenzafrani.congregate.adapters.AdapterYoutube;
 import com.example.stevenzafrani.congregate.configs.config;
+import com.example.stevenzafrani.congregate.interactors.FetchYoutubeData;
+import com.example.stevenzafrani.congregate.models.YoutubeVideo;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
@@ -48,7 +50,8 @@ public class HomeFragment extends Fragment {
 
         linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapterYoutube = new AdapterYoutube(getActivity().getPackageManager());
+
+        adapterYoutube = new AdapterYoutube(getActivity().getPackageManager(), new YoutubeVideo[11]);
         recyclerView.setAdapter(adapterYoutube);
 
 
@@ -88,5 +91,19 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapterYoutube.notifyDataSetChanged();
+        updateVideos();
+    }
+
+    public void updateVideos() {
+        FetchYoutubeData fetchYoutubeData = new FetchYoutubeData();
+
+        fetchYoutubeData.execute(adapterYoutube);
+
     }
 }
