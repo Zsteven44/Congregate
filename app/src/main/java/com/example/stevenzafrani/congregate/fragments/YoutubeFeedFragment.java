@@ -3,6 +3,7 @@ package com.example.stevenzafrani.congregate.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,9 +17,8 @@ import com.example.stevenzafrani.congregate.R;
 import com.example.stevenzafrani.congregate.adapters.AdapterYoutube;
 import com.example.stevenzafrani.congregate.interactors.FetchYoutubeData;
 import com.example.stevenzafrani.congregate.models.YoutubeVideo;
-import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 
-public class YoutubeFeedFragment extends YouTubePlayerSupportFragment{
+public class YoutubeFeedFragment extends Fragment {
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private AdapterYoutube adapterYoutube;

@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.example.stevenzafrani.congregate.R;
 
@@ -32,10 +31,6 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        Button youtubeButton = (Button) rootView.findViewById(R.id.button_select_youtube);
-        Button algorithmButton = (Button) rootView.findViewById(R.id.button_select_algorithm);
-
-
 
         return rootView;
     }
