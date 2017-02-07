@@ -1,17 +1,17 @@
 package com.example.stevenzafrani.congregate.activities;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 
 import com.example.stevenzafrani.congregate.R;
+import com.example.stevenzafrani.congregate.fragments.YoutubeSettingsFragment;
 
 import static com.example.stevenzafrani.congregate.R.id.container;
 
 public class SettingsActivity extends PreferenceActivity implements Preference.OnPreferenceChangeListener {
-    public SettingsActivity(Fragment fragment) {
-        getFragmentManager().beginTransaction().add(container, fragment).commit();
+    public SettingsActivity() {
+        getFragmentManager().beginTransaction().add(container, new YoutubeSettingsFragment()).commit();
 
 
     }

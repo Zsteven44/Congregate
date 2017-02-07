@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.stevenzafrani.congregate.R;
+import com.example.stevenzafrani.congregate.activities.HomeActivity;
 import com.example.stevenzafrani.congregate.adapters.AdapterYoutube;
 import com.example.stevenzafrani.congregate.interactors.FetchYoutubeData;
 import com.example.stevenzafrani.congregate.models.YoutubeVideo;
@@ -55,7 +56,7 @@ public class YoutubeFeedFragment extends Fragment {
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                ((HomeActivity)getActivity()).startSettingsActivity();
             }
         });
         return rootView;
@@ -73,4 +74,9 @@ public class YoutubeFeedFragment extends Fragment {
         fetchYoutubeData.execute("Hello");
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+
+    }
 }
