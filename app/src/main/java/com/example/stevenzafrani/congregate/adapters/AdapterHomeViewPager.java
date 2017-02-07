@@ -8,11 +8,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeViewPagerAdapter extends FragmentPagerAdapter {
+public class AdapterHomeViewPager extends FragmentPagerAdapter {
     private final List<String> fragmentTitleList = new ArrayList<>();
     private final List<Fragment> fragmentList = new ArrayList<>();
 
-    public HomeViewPagerAdapter(FragmentManager fm) {
+    public AdapterHomeViewPager(FragmentManager fm) {
         super(fm);
     }
 

@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.stevenzafrani.congregate.R;
 import com.example.stevenzafrani.congregate.adapters.AdapterYoutube;
@@ -22,10 +23,13 @@ public class YoutubeFeedFragment extends Fragment {
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private AdapterYoutube adapterYoutube;
+    private ImageView settingsButton;
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
+
+
     }
 
     @Override
@@ -47,6 +51,13 @@ public class YoutubeFeedFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         adapterYoutube = new AdapterYoutube(getActivity().getPackageManager(), new YoutubeVideo[11]);
         recyclerView.setAdapter(adapterYoutube);
+        settingsButton = (ImageView) rootView.findViewById(R.id.imageView_settings);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         return rootView;
 
     }
