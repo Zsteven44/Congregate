@@ -13,6 +13,7 @@ import android.widget.Spinner;
 
 import com.example.stevenzafrani.congregate.R;
 import com.example.stevenzafrani.congregate.algorithms.sort.BubbleSort;
+import com.example.stevenzafrani.congregate.algorithms.sort.SelectionSort;
 
 public class AlgorithmFragment extends Fragment {
 
@@ -29,15 +30,31 @@ public class AlgorithmFragment extends Fragment {
         super.onStart();
         Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinner_algorithm_sort);
         final int myArray[] = new int[20];
-        for (int i = 0; i <myArray.length; i++) {
-            myArray[i] = (int)(Math.random()*100);
-        }
 
 
+        spinner.setSelection(1, false);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                BubbleSort bubble = new BubbleSort(getContext(), myArray);
+
+                for (int i = 0; i <myArray.length; i++) {
+                    myArray[i] = (int)(Math.random()*100);
+                }
+                switch (i) {
+                    case 0:
+                        break;
+                    case 1:
+                        BubbleSort bubble = new BubbleSort(getContext(), myArray);
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        SelectionSort selection = new SelectionSort(getContext(), myArray);
+                    default:
+                        break;
+                }
 
             }
 
