@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <ListPreference
-        android:title="Search By Category"
-        android:summary="This is where we determine what kind of youtube videos we will search for."
+        android:title="Search Category"
+        android:summary="Specify the genre of videos you want to see."
+        android:key="sortBy"
+        android:entries="@array/youtubeCategoryArray"
+        android:entryValues="@array/youtubeCategoryValues"
+        android:defaultValue="1"
+        />
+    <ListPreference
+        android:title="Sort By"
+        android:summary="Determines the sort for searching videos"
         android:key="sortBy"
         android:entries="@array/youtubeSortByArray"
-        android:entryValues="@array/youtubeSortByValues"
+        android:entryValues="@array/youtubeCategoryValues"
         android:defaultValue="1"
         />
 

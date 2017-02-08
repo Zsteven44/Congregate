@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="youtubeCategoryArray">
+        <item>Most Popular</item>
+        <item>Top Rated</item>
+        <item>Recent</item>
+    </string-array>
+    <string-array name="youtubeCategoryValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+
+    </string-array>
     <string-array name="youtubeSortByArray">
         <item>Most Popular</item>
         <item>Top Rated</item>
