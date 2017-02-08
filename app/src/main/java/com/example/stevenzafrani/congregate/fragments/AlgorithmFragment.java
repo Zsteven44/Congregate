@@ -16,6 +16,7 @@ import java.util.List;
 
 public class AlgorithmFragment extends Fragment {
     private List<TextView> nodeList = new ArrayList<>();
+    private float textSize = (float) 9;
 
     @Nullable
     @Override
@@ -35,9 +36,11 @@ public class AlgorithmFragment extends Fragment {
             ViewGroup parent = (ViewGroup) getActivity().findViewById(R.id.container_units);
             textview = new TextView(((getContext())));
             textview.setBackgroundColor(getResources().getColor(R.color.colorNode));
-            randomVal = ((float) Math.random()*10);
-            textview.setTextSize(randomVal);
-            textview.setText(String.format("%.2f", randomVal));
+            textview.setWidth(45);
+            randomVal = ((float) Math.random()*100);
+            textview.setTextSize(textSize);
+            textview.setHeight(30+((int)randomVal));
+            textview.setText(String.format("%.0f",randomVal));
 
             parent.addView(textview);
             nodeList.add(textview);
