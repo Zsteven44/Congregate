@@ -1,5 +1,6 @@
 package com.example.stevenzafrani.congregate.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
@@ -78,12 +79,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void startSettingsActivity() {
-        /*
-        Intent intent = new Intent(this, SettingsActivity.class);
+    public void startSettingsActivity(String settingsName) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            intent.putExtra("settingsName", settingsName);
+            startActivity(intent);
 
-        startActivity(intent);
-        */
     }
 
     @Override

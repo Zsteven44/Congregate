@@ -56,7 +56,7 @@ public class YoutubeFeedFragment extends Fragment {
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((HomeActivity)getActivity()).startSettingsActivity();
+                ((HomeActivity)getActivity()).startSettingsActivity("Youtube");
             }
         });
         return rootView;
