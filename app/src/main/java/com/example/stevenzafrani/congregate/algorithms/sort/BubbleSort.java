@@ -35,7 +35,6 @@ public class BubbleSort {
 
     public void printResult(int array[]) {
         Log.v(BubbleSort.class.getSimpleName(), Arrays.toString(array));
-
     }
 
 }
