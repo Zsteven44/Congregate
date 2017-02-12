@@ -30,20 +30,9 @@ public class AlgorithmCanvas extends Drawable {
         Paint p = new Paint();
         p.setColor(Color.BLACK);
         canvas.drawColor(Color.WHITE);
-        //canvas.drawRect(0, 0, canvas.getWidth()/2, canvas.getHeight() /2, p);
         rectWidth = canvas.getWidth() / size;
         rectSpacing = rectWidth / 5;
 
-
-        /**
-         *  Each rectangles drawn need to be given left, top, right, and bottom displacements.
-         *  rectSpacing: rectWidth / 5
-         *  LEFT: (i*rectSpacing) + (i * rectWidth)
-         *  TOP: ( - 250 to start)
-         *  RIGHT: (20 - i) * canvas.getWidth()
-         *  BOTTOM: 0
-         *
-         */
 
         for (int i = 0; i < size; i++) {
             Log.v(AlgorithmCanvas.class.getSimpleName(), "Drawing Rect " + i);
