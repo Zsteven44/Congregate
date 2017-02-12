@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.example.stevenzafrani.congregate.R;
@@ -17,6 +18,7 @@ import com.example.stevenzafrani.congregate.algorithms.sort.InsertionSort;
 import com.example.stevenzafrani.congregate.algorithms.sort.MergeSort;
 import com.example.stevenzafrani.congregate.algorithms.sort.QuickSort;
 import com.example.stevenzafrani.congregate.algorithms.sort.SelectionSort;
+import com.example.stevenzafrani.congregate.models.AlgorithmCanvas;
 
 public class AlgorithmFragment extends Fragment {
 
@@ -33,8 +35,6 @@ public class AlgorithmFragment extends Fragment {
         super.onStart();
         Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinner_algorithm_sort);
         final int myArray[] = new int[20];
-
-
         spinner.setSelection(1, false);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -73,17 +73,16 @@ public class AlgorithmFragment extends Fragment {
 
             }
         });
-
-
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.algorithm_sort_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-
-
     }
 
-
-
-
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ImageView drawableCanvas= (ImageView) view.findViewById(R.id.imageView_algorithm);
+        drawableCanvas.setImageDrawable(new AlgorithmCanvas());
+    }
 }
