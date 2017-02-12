@@ -43,12 +43,13 @@ public class AlgorithmFragment extends Fragment {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
-                for (int i = 0; i <myArray.length; i++) {
-                    myArray[i] = (int)(Math.random()*100);
-                }
+
                 drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray));
                 switch (j) {
                     case 0:
+                        for (int i = 0; i <myArray.length; i++) {
+                            myArray[i] = (int)(Math.random()*100);
+                        }
                         break;
                     case 1:
                         new BubbleSort(getContext(), myArray, drawableCanvas);

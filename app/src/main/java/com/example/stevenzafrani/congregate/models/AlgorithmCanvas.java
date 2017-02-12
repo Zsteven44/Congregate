@@ -14,6 +14,8 @@ public class AlgorithmCanvas extends Drawable {
     int size;
     int valueArray[];
 
+    private float scale = 0f; // something between 0 and 1
+
     public AlgorithmCanvas(int[] array) {
         this.valueArray = array;
         this.size = array.length;
@@ -42,6 +44,7 @@ public class AlgorithmCanvas extends Drawable {
                     (rectSpacing/2) + (i*rectWidth) + (rectWidth - (rectSpacing/2)),
                     canvas.getHeight()/2,
                     p);
+            canvas.drawText(Integer.toString(valueArray[i]),(rectWidth/2) + (i*rectWidth) - 4,(canvas.getHeight()/2) + 20,p);
         }
 
     }
