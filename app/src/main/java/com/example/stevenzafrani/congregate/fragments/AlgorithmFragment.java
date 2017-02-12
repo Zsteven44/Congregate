@@ -21,6 +21,7 @@ import com.example.stevenzafrani.congregate.algorithms.sort.SelectionSort;
 import com.example.stevenzafrani.congregate.models.AlgorithmCanvas;
 
 public class AlgorithmFragment extends Fragment {
+    private int[] myArray;
 
 
     @Nullable
@@ -34,21 +35,23 @@ public class AlgorithmFragment extends Fragment {
     public void onStart() {
         super.onStart();
         Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinner_algorithm_sort);
-        final int myArray[] = new int[20];
+        myArray = new int[20];
+
+        final ImageView drawableCanvas= (ImageView) getActivity().findViewById(R.id.imageView_algorithm);
+
         spinner.setSelection(1, false);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
-
                 for (int i = 0; i <myArray.length; i++) {
                     myArray[i] = (int)(Math.random()*100);
                 }
-
+                drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray));
                 switch (j) {
                     case 0:
                         break;
                     case 1:
-                        new BubbleSort(getContext(), myArray);
+                        new BubbleSort(getContext(), myArray, drawableCanvas);
                         break;
                     case 2:
                         new MergeSort(getContext(), myArray);
@@ -82,7 +85,7 @@ public class AlgorithmFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ImageView drawableCanvas= (ImageView) view.findViewById(R.id.imageView_algorithm);
-        drawableCanvas.setImageDrawable(new AlgorithmCanvas());
+
     }
+
 }
