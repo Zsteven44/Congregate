@@ -4,13 +4,13 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.example.stevenzafrani.congregate.models.AlgorithmCanvas;
-
 import java.util.Arrays;
 
 public class BubbleSort {
 
-    public BubbleSort(Context context, int array[], ImageView canvas){
+    public BubbleSort(final Context context,
+                      final int array[],
+                      final ImageView canvas){
         Log.v(BubbleSort.class.getSimpleName(), Arrays.toString(array));
 
         int n = array.length;
@@ -25,17 +25,11 @@ public class BubbleSort {
 
             }
             Log.v(BubbleSort.class.getSimpleName(), "Pass " + Integer.toString(n-i) + " " + Arrays.toString(array));
-            try {
-                Thread.sleep(1500);
 
-            }
-            catch (InterruptedException e)
-            {
-                e.printStackTrace();
-            }
-            canvas.setImageDrawable(new AlgorithmCanvas(array));
+
         }
         printResult(array);
+
     }
 
 
