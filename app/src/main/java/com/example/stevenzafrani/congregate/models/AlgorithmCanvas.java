@@ -7,6 +7,9 @@ import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.util.Log;
+
+import java.util.Arrays;
 
 
 public class AlgorithmCanvas extends Drawable {
@@ -36,6 +39,8 @@ public class AlgorithmCanvas extends Drawable {
 
 
         for (int i = 0; i < size; i++) {
+            Log.v(AlgorithmCanvas.class.getSimpleName(), "valueArray " + Arrays.toString(valueArray));
+
             canvas.drawRect(
                     (rectSpacing/2) + (i*rectWidth),
                     (canvas.getHeight()/3) - (valueArray[i]+10),
@@ -46,6 +51,7 @@ public class AlgorithmCanvas extends Drawable {
         }
 
         for (int i = 0; i < size; i++) {
+            Log.v(AlgorithmCanvas.class.getSimpleName(), "changingArray " + Arrays.toString(changingArray));
             canvas.drawRect(
                     (rectSpacing/2) + (i*rectWidth),
                     (2*canvas.getHeight()/3) - (changingArray[i]+10),

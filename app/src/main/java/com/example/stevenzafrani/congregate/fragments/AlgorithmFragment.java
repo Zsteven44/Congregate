@@ -55,7 +55,7 @@ public class AlgorithmFragment extends BaseFragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
 
-                //drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray));
+                drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray));
                 switch (j) {
                     case 0:
                         for (int i = 0; i <myArray.length; i++) {
@@ -111,7 +111,7 @@ public class AlgorithmFragment extends BaseFragment {
         final Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                ;
+
                 newArray = algoLog.get(i).getArrayValues();
                 Log.v(AlgorithmFragment.class.getSimpleName(), "newArray " + i + ", " + Arrays.toString(newArray));
 
