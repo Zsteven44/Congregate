@@ -33,10 +33,23 @@ public class BubbleSort {
     }
 
 
-    public void swapNumbers(int j, int k, int array[]) {
+    public void swapNumbers(final int j,
+                            final int k,
+                            final int array[]) {
         int temp = array[k];
         array[k] = array[j];
         array[j] = temp;
+        /*
+        Log.v(BubbleSort.class.getSimpleName(), "About to run handler with postDelayed.")
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        }, 100);
+        */
+
     }
 
     public void printResult(int array[]) {
