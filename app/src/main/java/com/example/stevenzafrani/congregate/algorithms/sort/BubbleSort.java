@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.example.stevenzafrani.congregate.fragments.AlgorithmFragment;
 import com.example.stevenzafrani.congregate.models.AlgorithmPass;
 
 import java.util.ArrayList;
@@ -54,7 +53,7 @@ public class BubbleSort extends BaseSort {
     }
 
     public void callSimulation(ArrayList<AlgorithmPass> algoLog) {
-        activity.getFragmentManager()
+
     }
 
 }

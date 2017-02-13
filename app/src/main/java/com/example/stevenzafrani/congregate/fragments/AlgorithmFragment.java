@@ -3,7 +3,6 @@ package com.example.stevenzafrani.congregate.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,7 @@ import com.example.stevenzafrani.congregate.models.AlgorithmPass;
 
 import java.util.ArrayList;
 
-public class AlgorithmFragment extends Fragment {
+public class AlgorithmFragment extends BaseFragment {
     private int[] myArray;
     private int[] newArray;
 

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +17,7 @@ import com.example.stevenzafrani.congregate.fragments.YoutubeFeedFragment;
 
 import static com.example.stevenzafrani.congregate.R.id.container;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
+public class HomeActivity extends BaseActivity implements View.OnClickListener {
     TabItem youtubeButton;
     TabItem algorithmButton;
     TabItem homeButton;
