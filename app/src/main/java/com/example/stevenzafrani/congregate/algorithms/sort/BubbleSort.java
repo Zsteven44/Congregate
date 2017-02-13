@@ -2,19 +2,18 @@ package com.example.stevenzafrani.congregate.algorithms.sort;
 
 import android.app.Activity;
 import android.util.Log;
-import android.widget.ImageView;
 
+import com.example.stevenzafrani.congregate.models.AlgorithmLog;
 import com.example.stevenzafrani.congregate.models.AlgorithmPass;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class BubbleSort extends BaseSort {
-    ArrayList<AlgorithmPass> algorithmLog = new ArrayList<>();
+    private AlgorithmLog algorithmLog = new AlgorithmLog();
 
     public BubbleSort(final Activity activity,
-                      final int array[],
-                      final ImageView canvas){
+                      final int array[]) {
         super(activity);
         Log.v(BubbleSort.class.getSimpleName(), Arrays.toString(array));
 
@@ -26,15 +25,16 @@ public class BubbleSort extends BaseSort {
                 if (array[j] > array[k]) {
                     swapNumbers(j, k, array);
 
-                    // Testing Log
-                    algorithmLog.add(new AlgorithmPass(i, array));
-                    Log.v(BubbleSort.class.getSimpleName(), "The AlgorithmLog is currently " + algorithmLog.toString());
                 }
             }
+            algorithmLog.add(new AlgorithmPass(i, array));
             Log.v(BubbleSort.class.getSimpleName(), "Pass " + Integer.toString(n-i) + " " + Arrays.toString(array));
         }
         printResult(array);
 
+    }
+    public AlgorithmLog getAlgorithmLog() {
+        return algorithmLog;
     }
 
 

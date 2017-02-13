@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
+import com.example.stevenzafrani.congregate.activities.BaseActivity;
+
 public abstract class BaseFragment extends Fragment {
 
     @Override
@@ -12,5 +14,7 @@ public abstract class BaseFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-
+    public BaseActivity getBaseActivity() {
+        return (BaseActivity) getActivity();
+    }
 }

@@ -18,8 +18,8 @@ public class AlgorithmCanvas extends Drawable {
     private float scale = 0f; // something between 0 and 1
 
     public AlgorithmCanvas(int[] array, int[] array2) {
-        this.valueArray = array;
         this.size = array.length;
+        this.valueArray = array;
         this.changingArray = array2;
 
     }

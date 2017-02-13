@@ -2,7 +2,10 @@ package com.example.stevenzafrani.congregate.fragments;
 
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,13 +21,16 @@ import com.example.stevenzafrani.congregate.algorithms.sort.MergeSort;
 import com.example.stevenzafrani.congregate.algorithms.sort.QuickSort;
 import com.example.stevenzafrani.congregate.algorithms.sort.SelectionSort;
 import com.example.stevenzafrani.congregate.models.AlgorithmCanvas;
-import com.example.stevenzafrani.congregate.models.AlgorithmPass;
+import com.example.stevenzafrani.congregate.models.AlgorithmLog;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public class AlgorithmFragment extends BaseFragment {
     private int[] myArray;
     private int[] newArray;
+    private AlgorithmLog algorithmLog;
+    int i;
+    Handler handler = new Handler();
 
     @Nullable
     @Override
@@ -39,6 +45,7 @@ public class AlgorithmFragment extends BaseFragment {
         Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinner_algorithm_sort);
         myArray = new int[20];
         newArray = new int[20];
+        algorithmLog = new AlgorithmLog();
 
         final ImageView drawableCanvas= (ImageView) getActivity().findViewById(R.id.imageView_algorithm);
 
@@ -53,10 +60,10 @@ public class AlgorithmFragment extends BaseFragment {
                         for (int i = 0; i <myArray.length; i++) {
                             myArray[i] = (int)(Math.random()*100);
                         }
-                        newArray = myArray;
+                        algorithmLog.clear();
                         break;
                     case 1:
-                        new BubbleSort(getActivity(), myArray, drawableCanvas);
+                        algorithmLog = new BubbleSort(getActivity(), myArray).getAlgorithmLog();
                         break;
                     case 2:
                         new MergeSort(getActivity(), myArray);
@@ -72,6 +79,9 @@ public class AlgorithmFragment extends BaseFragment {
                         break;
                     default:
                         break;
+                }
+                if (algorithmLog.size()>0) {
+                    runSimulation(algorithmLog);
                 }
 
             }
@@ -93,7 +103,21 @@ public class AlgorithmFragment extends BaseFragment {
 
     }
 
-    public void runSimulation(ArrayList<AlgorithmPass> algorithmLog) {
+    public void runSimulation(@NonNull final AlgorithmLog algoLog) {
+        i =0;
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                Log.v(AlgorithmFragment.class.getSimpleName(), "Sim loop " + i + ", " + Arrays.toString(algoLog.get(i).getArrayValues()));
+                newArray = algoLog.get(i).getArrayValues();
+                i++;
+                if(i < algoLog.size()) {
+                    handler.postDelayed(this, 1000);
+                }
+            }
+        };
+
+        handler.post(runnable);
 
     }
 }
