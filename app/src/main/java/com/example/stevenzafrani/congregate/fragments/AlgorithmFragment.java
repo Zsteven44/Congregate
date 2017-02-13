@@ -22,7 +22,7 @@ import com.example.stevenzafrani.congregate.models.AlgorithmCanvas;
 
 public class AlgorithmFragment extends Fragment {
     private int[] myArray;
-
+    private int[] newArray;
 
     @Nullable
     @Override
@@ -36,6 +36,7 @@ public class AlgorithmFragment extends Fragment {
         super.onStart();
         Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinner_algorithm_sort);
         myArray = new int[20];
+        newArray = new int[20];
 
         final ImageView drawableCanvas= (ImageView) getActivity().findViewById(R.id.imageView_algorithm);
 
@@ -44,12 +45,13 @@ public class AlgorithmFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
 
-                drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray));
+                drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray));
                 switch (j) {
                     case 0:
                         for (int i = 0; i <myArray.length; i++) {
                             myArray[i] = (int)(Math.random()*100);
                         }
+                        newArray = myArray;
                         break;
                     case 1:
                         new BubbleSort(getContext(), myArray, drawableCanvas);

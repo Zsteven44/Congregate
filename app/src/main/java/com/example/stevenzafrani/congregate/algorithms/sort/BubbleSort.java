@@ -1,7 +1,6 @@
 package com.example.stevenzafrani.congregate.algorithms.sort;
 
 import android.content.Context;
-import android.os.Handler;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -16,7 +15,7 @@ public class BubbleSort {
                       final int array[],
                       final ImageView canvas){
         Log.v(BubbleSort.class.getSimpleName(), Arrays.toString(array));
-        algorithmLog.clear();
+
         int n = array.length;
         int k;
         for (int i = n; i >= 0; i--) {
@@ -27,24 +26,12 @@ public class BubbleSort {
 
                     // Testing Log
                     algorithmLog.add(new AlgorithmPass(i, array));
+                    Log.v(BubbleSort.class.getSimpleName(), "The AlgorithmLog is currently " + algorithmLog.toString());
                 }
             }
             Log.v(BubbleSort.class.getSimpleName(), "Pass " + Integer.toString(n-i) + " " + Arrays.toString(array));
         }
         printResult(array);
-        for (int z =0; z<algorithmLog.size(); z++) {
-            final AlgorithmPass tempAlgorithmPass = new AlgorithmPass(algorithmLog.get(z).getPassNumber(),algorithmLog.get(z).getArrayValues());
-            Handler handler1 = new Handler();
-            handler1.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    runSimulation(tempAlgorithmPass, array);
-                }
-            }, 1000);
-
-        }
-
-
 
     }
 
@@ -65,7 +52,6 @@ public class BubbleSort {
 
     public void runSimulation(AlgorithmPass algorithmPass, int[] array) {
 
-        array = algorithmPass.getArrayValues();
 
     }
 }

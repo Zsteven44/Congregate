@@ -13,12 +13,14 @@ import android.util.Log;
 public class AlgorithmCanvas extends Drawable {
     int size;
     int valueArray[];
+    int changingArray[];
 
     private float scale = 0f; // something between 0 and 1
 
-    public AlgorithmCanvas(int[] array) {
+    public AlgorithmCanvas(int[] array, int[] array2) {
         this.valueArray = array;
         this.size = array.length;
+        this.changingArray = array2;
 
     }
 
@@ -46,6 +48,18 @@ public class AlgorithmCanvas extends Drawable {
                     p);
             canvas.drawText(Integer.toString(valueArray[i]),(rectWidth/2) + (i*rectWidth) - 4,(canvas.getHeight()/2) + 20,p);
         }
+
+        for (int i = 0; i < size; i++) {
+            Log.v(AlgorithmCanvas.class.getSimpleName(), "Drawing Rect " + i);
+            canvas.drawRect(
+                    (rectSpacing/2) + (i*rectWidth),
+                    (canvas.getHeight()) - (changingArray[i]+10),
+                    (rectSpacing/2) + (i*rectWidth) + (rectWidth - (rectSpacing/2)),
+                    canvas.getHeight(),
+                    p);
+            canvas.drawText(Integer.toString(changingArray[i]),(rectWidth/2) + (i*rectWidth) - 4,(canvas.getHeight()/2) + 20,p);
+        }
+
 
     }
 
