@@ -15,8 +15,6 @@ import com.example.stevenzafrani.congregate.fragments.AlgorithmFragment;
 import com.example.stevenzafrani.congregate.fragments.HomeFragment;
 import com.example.stevenzafrani.congregate.fragments.YoutubeFeedFragment;
 
-import static com.example.stevenzafrani.congregate.R.id.container;
-
 public class HomeActivity extends BaseActivity implements View.OnClickListener {
     TabItem youtubeButton;
     TabItem algorithmButton;
@@ -32,12 +30,12 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_home);
 
         if (savedInstanceState ==null) {
-            getSupportFragmentManager().beginTransaction().add(container, new HomeFragment()).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.container, new HomeFragment()).commit();
 
 
         }
