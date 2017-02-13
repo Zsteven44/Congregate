@@ -9,13 +9,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.example.stevenzafrani.congregate.R;
 import com.example.stevenzafrani.congregate.algorithms.sort.BubbleSort;
+import com.example.stevenzafrani.congregate.algorithms.sort.InsertionSort;
+import com.example.stevenzafrani.congregate.algorithms.sort.MergeSort;
+import com.example.stevenzafrani.congregate.algorithms.sort.QuickSort;
 import com.example.stevenzafrani.congregate.algorithms.sort.SelectionSort;
+import com.example.stevenzafrani.congregate.models.AlgorithmCanvas;
 
 public class AlgorithmFragment extends Fragment {
+    private int[] myArray;
 
 
     @Nullable
@@ -29,29 +35,37 @@ public class AlgorithmFragment extends Fragment {
     public void onStart() {
         super.onStart();
         Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinner_algorithm_sort);
-        final int myArray[] = new int[20];
+        myArray = new int[20];
 
+        final ImageView drawableCanvas= (ImageView) getActivity().findViewById(R.id.imageView_algorithm);
 
         spinner.setSelection(1, false);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
 
-                for (int i = 0; i <myArray.length; i++) {
-                    myArray[i] = (int)(Math.random()*100);
-                }
-                switch (i) {
+                drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray));
+                switch (j) {
                     case 0:
+                        for (int i = 0; i <myArray.length; i++) {
+                            myArray[i] = (int)(Math.random()*100);
+                        }
                         break;
                     case 1:
-                        BubbleSort bubble = new BubbleSort(getContext(), myArray);
+                        new BubbleSort(getContext(), myArray, drawableCanvas);
                         break;
                     case 2:
+                        new MergeSort(getContext(), myArray);
                         break;
                     case 3:
+                        new InsertionSort(getContext(), myArray);
                         break;
                     case 4:
-                        SelectionSort selection = new SelectionSort(getContext(), myArray);
+                        new SelectionSort(getContext(), myArray);
+                        break;
+                    case 5:
+                        new QuickSort(getContext(), myArray);
+                        break;
                     default:
                         break;
                 }
@@ -63,17 +77,16 @@ public class AlgorithmFragment extends Fragment {
 
             }
         });
-
-
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.algorithm_sort_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-
-
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-
+    }
 
 }
