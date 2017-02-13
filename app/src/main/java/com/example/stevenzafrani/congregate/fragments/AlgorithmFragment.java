@@ -45,6 +45,7 @@ public class AlgorithmFragment extends BaseFragment {
         super.onStart();
         Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinner_algorithm_sort);
         myArray = new int[20];
+        newArray = new int[20];
         algorithmLog = new AlgorithmLog();
 
         drawableCanvas= (ImageView) getActivity().findViewById(R.id.imageView_algorithm);
@@ -55,13 +56,15 @@ public class AlgorithmFragment extends BaseFragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
 
                 drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray));
+                algorithmLog.clear();
                 switch (j) {
                     case 0:
                         for (int i = 0; i <myArray.length; i++) {
                             myArray[i] = (int)(Math.random()*100);
                         }
                         newArray = Arrays.copyOf(myArray, myArray.length);
-                        algorithmLog.clear();
+                        drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray));
+
                         break;
                     case 1:
                         algorithmLog = new BubbleSort(getActivity(), myArray).getAlgorithmLog();
@@ -107,21 +110,24 @@ public class AlgorithmFragment extends BaseFragment {
 
     public void runSimulation(@NonNull final AlgorithmLog algoLog) {
         i =0;
-        final Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray));
-                newArray = algoLog.get(i).getArrayValues();
-                Log.v(AlgorithmFragment.class.getSimpleName(), "newArray " + i + ", " + Arrays.toString(newArray));
+        if (algoLog.size()>1) {
+            final Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
 
-                i++;
-                if(i < algoLog.size()) {
-                    handler.postDelayed(this, 500);
+                    drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray, newArray));
+                    newArray = algoLog.get(i).getArrayValues();
+                    Log.v(AlgorithmFragment.class.getSimpleName(), "newArray " + i + ", " + Arrays.toString(newArray));
+
+                    i++;
+                    if (i < algoLog.size()) {
+                        handler.postDelayed(this, 500);
+                    }
                 }
-            }
-        };
-
+            };
         handler.post(runnable);
-
+        } else{
+            return;
+        }
     }
 }

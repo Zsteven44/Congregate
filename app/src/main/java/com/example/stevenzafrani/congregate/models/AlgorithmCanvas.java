@@ -13,6 +13,7 @@ public class AlgorithmCanvas extends Drawable {
     private int size;
     private int valueArray[];
     private int changingArray[];
+    private int finalArray[];
 
     private float scale = 0f; // something between 0 and 1
 
@@ -56,6 +57,17 @@ public class AlgorithmCanvas extends Drawable {
         }
 
 
+        /*
+        for (int i = 0; i < size; i++) {
+            canvas.drawRect(
+                    (rectSpacing/2) + (i*rectWidth),
+                    (canvas.getHeight()) - (finalArray[i]+10),
+                    (rectSpacing/2) + (i*rectWidth) + (rectWidth - (rectSpacing/2)),
+                    (canvas.getHeight()),
+                    p);
+            canvas.drawText(Integer.toString(finalArray[i]),(rectWidth/2) + (i*rectWidth) - 4,(canvas.getHeight()) + 20,p);
+        }
+        */
 
 
     }
