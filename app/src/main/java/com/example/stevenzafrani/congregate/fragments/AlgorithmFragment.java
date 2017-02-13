@@ -19,6 +19,9 @@ import com.example.stevenzafrani.congregate.algorithms.sort.MergeSort;
 import com.example.stevenzafrani.congregate.algorithms.sort.QuickSort;
 import com.example.stevenzafrani.congregate.algorithms.sort.SelectionSort;
 import com.example.stevenzafrani.congregate.models.AlgorithmCanvas;
+import com.example.stevenzafrani.congregate.models.AlgorithmPass;
+
+import java.util.ArrayList;
 
 public class AlgorithmFragment extends Fragment {
     private int[] myArray;
@@ -54,19 +57,19 @@ public class AlgorithmFragment extends Fragment {
                         newArray = myArray;
                         break;
                     case 1:
-                        new BubbleSort(getContext(), myArray, drawableCanvas);
+                        new BubbleSort(getActivity(), myArray, drawableCanvas);
                         break;
                     case 2:
-                        new MergeSort(getContext(), myArray);
+                        new MergeSort(getActivity(), myArray);
                         break;
                     case 3:
-                        new InsertionSort(getContext(), myArray);
+                        new InsertionSort(getActivity(), myArray);
                         break;
                     case 4:
-                        new SelectionSort(getContext(), myArray);
+                        new SelectionSort(getActivity(), myArray);
                         break;
                     case 5:
-                        new QuickSort(getContext(), myArray);
+                        new QuickSort(getActivity(), myArray);
                         break;
                     default:
                         break;
@@ -91,4 +94,7 @@ public class AlgorithmFragment extends Fragment {
 
     }
 
+    public void runSimulation(ArrayList<AlgorithmPass> algorithmLog) {
+
+    }
 }

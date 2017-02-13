@@ -1,15 +1,16 @@
 package com.example.stevenzafrani.congregate.algorithms.sort;
 
-import android.content.Context;
+import android.app.Activity;
 import android.util.Log;
 
 import java.util.Arrays;
 
-public class MergeSort {
+public class MergeSort extends BaseSort {
     int[] array;
     int[] tempArray;
     int length;
-    public MergeSort(Context context, int[] array) {
+    public MergeSort(Activity activity, int[] array) {
+        super(activity);
         this.array = array;
         this.length =array.length;
         this.tempArray = new int[length];

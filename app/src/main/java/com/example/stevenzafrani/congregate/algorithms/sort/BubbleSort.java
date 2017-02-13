@@ -1,19 +1,22 @@
 package com.example.stevenzafrani.congregate.algorithms.sort;
 
-import android.content.Context;
+import android.app.Activity;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.example.stevenzafrani.congregate.fragments.AlgorithmFragment;
 import com.example.stevenzafrani.congregate.models.AlgorithmPass;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class BubbleSort {
+public class BubbleSort extends BaseSort {
     ArrayList<AlgorithmPass> algorithmLog = new ArrayList<>();
-    public BubbleSort(final Context context,
+
+    public BubbleSort(final Activity activity,
                       final int array[],
                       final ImageView canvas){
+        super(activity);
         Log.v(BubbleSort.class.getSimpleName(), Arrays.toString(array));
 
         int n = array.length;
@@ -50,8 +53,8 @@ public class BubbleSort {
         Log.v(BubbleSort.class.getSimpleName(), Arrays.toString(array));
     }
 
-    public void runSimulation(AlgorithmPass algorithmPass, int[] array) {
-
-
+    public void callSimulation(ArrayList<AlgorithmPass> algoLog) {
+        activity.getFragmentManager()
     }
+
 }

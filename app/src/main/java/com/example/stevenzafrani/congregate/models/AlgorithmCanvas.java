@@ -42,23 +42,25 @@ public class AlgorithmCanvas extends Drawable {
             Log.v(AlgorithmCanvas.class.getSimpleName(), "Drawing Rect " + i);
             canvas.drawRect(
                     (rectSpacing/2) + (i*rectWidth),
-                    (canvas.getHeight()/2) - (valueArray[i]+10),
+                    (canvas.getHeight()/3) - (valueArray[i]+10),
                     (rectSpacing/2) + (i*rectWidth) + (rectWidth - (rectSpacing/2)),
-                    canvas.getHeight()/2,
+                    canvas.getHeight()/3,
                     p);
-            canvas.drawText(Integer.toString(valueArray[i]),(rectWidth/2) + (i*rectWidth) - 4,(canvas.getHeight()/2) + 20,p);
+            canvas.drawText(Integer.toString(valueArray[i]),(rectWidth/2) + (i*rectWidth) - 4,(canvas.getHeight()/3) + 20,p);
         }
 
         for (int i = 0; i < size; i++) {
             Log.v(AlgorithmCanvas.class.getSimpleName(), "Drawing Rect " + i);
             canvas.drawRect(
                     (rectSpacing/2) + (i*rectWidth),
-                    (canvas.getHeight()) - (changingArray[i]+10),
+                    (2*canvas.getHeight()/3) - (changingArray[i]+10),
                     (rectSpacing/2) + (i*rectWidth) + (rectWidth - (rectSpacing/2)),
-                    canvas.getHeight(),
+                    (2*canvas.getHeight()/3),
                     p);
-            canvas.drawText(Integer.toString(changingArray[i]),(rectWidth/2) + (i*rectWidth) - 4,(canvas.getHeight()/2) + 20,p);
+            canvas.drawText(Integer.toString(changingArray[i]),(rectWidth/2) + (i*rectWidth) - 4,(2*canvas.getHeight()/3) + 20,p);
         }
+
+
 
 
     }

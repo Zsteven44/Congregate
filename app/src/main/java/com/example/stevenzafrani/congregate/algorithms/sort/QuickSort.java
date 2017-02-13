@@ -1,15 +1,16 @@
 package com.example.stevenzafrani.congregate.algorithms.sort;
 
 
-import android.content.Context;
+import android.app.Activity;
 import android.util.Log;
 
 import java.util.Arrays;
 
-public class QuickSort {
+public class QuickSort extends BaseSort{
     int temp;
     int[] array;
-    public QuickSort(Context context,int[] array) {
+    public QuickSort(Activity activity, int[] array) {
+        super(activity);
         this.array = array;
         int minIndex = 0;
         int maxIndex = array.length-1;

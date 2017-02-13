@@ -1,15 +1,15 @@
 package com.example.stevenzafrani.congregate.algorithms.sort;
 
 
-import android.content.Context;
+import android.app.Activity;
 import android.util.Log;
 
 import java.util.Arrays;
 
-public class SelectionSort {
+public class SelectionSort extends BaseSort{
 
-    public SelectionSort(Context context, int[] array) {
-
+    public SelectionSort(Activity activity, int[] array) {
+        super(activity);
         int n = array.length;
         int index;
         int temp;
