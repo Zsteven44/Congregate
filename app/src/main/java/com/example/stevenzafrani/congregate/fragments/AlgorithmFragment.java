@@ -30,6 +30,7 @@ public class AlgorithmFragment extends BaseFragment {
     private int[] newArray;
     private AlgorithmLog algorithmLog;
     int i;
+    private ImageView drawableCanvas;
     Handler handler = new Handler();
 
     @Nullable
@@ -47,14 +48,14 @@ public class AlgorithmFragment extends BaseFragment {
         newArray = new int[20];
         algorithmLog = new AlgorithmLog();
 
-        final ImageView drawableCanvas= (ImageView) getActivity().findViewById(R.id.imageView_algorithm);
+        drawableCanvas= (ImageView) getActivity().findViewById(R.id.imageView_algorithm);
 
         spinner.setSelection(1, false);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
 
-                drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray));
+                //drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray));
                 switch (j) {
                     case 0:
                         for (int i = 0; i <myArray.length; i++) {
@@ -64,6 +65,7 @@ public class AlgorithmFragment extends BaseFragment {
                         break;
                     case 1:
                         algorithmLog = new BubbleSort(getActivity(), myArray).getAlgorithmLog();
+
                         break;
                     case 2:
                         new MergeSort(getActivity(), myArray);
@@ -105,14 +107,17 @@ public class AlgorithmFragment extends BaseFragment {
 
     public void runSimulation(@NonNull final AlgorithmLog algoLog) {
         i =0;
+        drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray));
         final Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                Log.v(AlgorithmFragment.class.getSimpleName(), "Sim loop " + i + ", " + Arrays.toString(algoLog.get(i).getArrayValues()));
+                ;
                 newArray = algoLog.get(i).getArrayValues();
+                Log.v(AlgorithmFragment.class.getSimpleName(), "newArray " + i + ", " + Arrays.toString(newArray));
+
                 i++;
                 if(i < algoLog.size()) {
-                    handler.postDelayed(this, 1000);
+                    handler.postDelayed(this, 500);
                 }
             }
         };

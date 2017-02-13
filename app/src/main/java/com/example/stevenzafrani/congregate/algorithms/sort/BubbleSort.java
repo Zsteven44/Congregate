@@ -19,6 +19,7 @@ public class BubbleSort extends BaseSort {
 
         int n = array.length;
         int k;
+
         for (int i = n; i >= 0; i--) {
             for (int j = 0; j < n - 1; j++) {
                 k = j + 1;
@@ -27,8 +28,11 @@ public class BubbleSort extends BaseSort {
 
                 }
             }
-            algorithmLog.add(new AlgorithmPass(i, array));
-            Log.v(BubbleSort.class.getSimpleName(), "Pass " + Integer.toString(n-i) + " " + Arrays.toString(array));
+            int[] tempArray = Arrays.copyOf(array, array.length);
+            AlgorithmPass algorithmPass = new AlgorithmPass(n-i, tempArray);
+            algorithmLog.add(algorithmPass);
+            Log.v(BubbleSort.class.getSimpleName(), "Loop Pass " + Integer.toString(n-i) + " " + Arrays.toString(array));
+            Log.v(BubbleSort.class.getSimpleName(), "Log Pass: " + Integer.toString(algorithmLog.get(20-i).getPassNumber())+Arrays.toString(algorithmLog.get(20-i).getArrayValues()));
         }
         printResult(array);
 

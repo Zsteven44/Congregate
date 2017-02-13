@@ -7,7 +7,6 @@ import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 
 public class AlgorithmCanvas extends Drawable {
@@ -26,8 +25,6 @@ public class AlgorithmCanvas extends Drawable {
 
     @Override
     public void draw(@NonNull Canvas canvas) {
-        Log.v(AlgorithmCanvas.class.getSimpleName(), "Canvas Height: " + canvas.getHeight() + ", Canvas Width: " + canvas.getWidth());
-
         int rectWidth;
         int rectHeight;
         int rectSpacing;
@@ -39,7 +36,6 @@ public class AlgorithmCanvas extends Drawable {
 
 
         for (int i = 0; i < size; i++) {
-            Log.v(AlgorithmCanvas.class.getSimpleName(), "Drawing Rect " + i);
             canvas.drawRect(
                     (rectSpacing/2) + (i*rectWidth),
                     (canvas.getHeight()/3) - (valueArray[i]+10),
@@ -50,7 +46,6 @@ public class AlgorithmCanvas extends Drawable {
         }
 
         for (int i = 0; i < size; i++) {
-            Log.v(AlgorithmCanvas.class.getSimpleName(), "Drawing Rect " + i);
             canvas.drawRect(
                     (rectSpacing/2) + (i*rectWidth),
                     (2*canvas.getHeight()/3) - (changingArray[i]+10),
