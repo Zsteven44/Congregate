@@ -1,5 +1,6 @@
 package com.example.stevenzafrani.congregate.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
@@ -10,7 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.stevenzafrani.congregate.R;
-import com.example.stevenzafrani.congregate.adapters.HomeViewPagerAdapter;
+import com.example.stevenzafrani.congregate.adapters.AdapterHomeViewPager;
 import com.example.stevenzafrani.congregate.fragments.AlgorithmFragment;
 import com.example.stevenzafrani.congregate.fragments.HomeFragment;
 import com.example.stevenzafrani.congregate.fragments.YoutubeFeedFragment;
@@ -35,6 +36,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_home);
+
         if (savedInstanceState ==null) {
             getSupportFragmentManager().beginTransaction().add(container, new HomeFragment()).commit();
 
@@ -45,6 +47,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStart() {
         super.onStart();
+
         youtubeButton = (TabItem) this.findViewById(R.id.button_select_youtube);
         algorithmButton = (TabItem) this.findViewById(R.id.button_select_algorithm);
         homeButton = (TabItem) this.findViewById(R.id.button_select_home);
@@ -53,38 +56,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         homeViewPagerSetup(viewPager);
 
         homeTab.setupWithViewPager(viewPager);
-
-        /* TabLayout.OnTabSelectedListener tabListener = new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                switch (tab.getPosition()) {
-                    case 0:
-                        getSupportFragmentManager().beginTransaction().replace(container, new HomeFragment()).commit();
-                        break;
-                    case 1:
-                        getSupportFragmentManager().beginTransaction().replace(container, new YoutubeFeedFragment()).commit();
-                        break;
-                    case 2:
-                        getSupportFragmentManager().beginTransaction().replace(container, new AlgorithmFragment()).commit();
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        };
-
-        homeTab.addOnTabSelectedListener(tabListener);
-        */
 
     }
 
@@ -100,11 +71,18 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public void homeViewPagerSetup(ViewPager viewpager) {
-        HomeViewPagerAdapter homeViewPagerAdapter = new HomeViewPagerAdapter(getSupportFragmentManager());
+        AdapterHomeViewPager homeViewPagerAdapter = new AdapterHomeViewPager(getSupportFragmentManager());
         homeViewPagerAdapter.addFragment(new HomeFragment(), "HOME");
         homeViewPagerAdapter.addFragment(new YoutubeFeedFragment(), "YOUTUBE");
         homeViewPagerAdapter.addFragment(new AlgorithmFragment(), "ALGORITHM");
         viewpager.setAdapter(homeViewPagerAdapter);
+
+    }
+
+    public void startSettingsActivity(String settingsName) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            intent.putExtra("settingsName", settingsName);
+            startActivity(intent);
 
     }
 

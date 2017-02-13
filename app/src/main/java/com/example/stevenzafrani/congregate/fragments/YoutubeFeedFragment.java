@@ -12,8 +12,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.stevenzafrani.congregate.R;
+import com.example.stevenzafrani.congregate.activities.HomeActivity;
 import com.example.stevenzafrani.congregate.adapters.AdapterYoutube;
 import com.example.stevenzafrani.congregate.interactors.FetchYoutubeData;
 import com.example.stevenzafrani.congregate.models.YoutubeVideo;
@@ -22,10 +24,13 @@ public class YoutubeFeedFragment extends Fragment {
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private AdapterYoutube adapterYoutube;
+    private ImageView settingsButton;
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
+
+
     }
 
     @Override
@@ -47,6 +52,13 @@ public class YoutubeFeedFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         adapterYoutube = new AdapterYoutube(getActivity().getPackageManager(), new YoutubeVideo[11]);
         recyclerView.setAdapter(adapterYoutube);
+        settingsButton = (ImageView) rootView.findViewById(R.id.imageView_settings);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((HomeActivity)getActivity()).startSettingsActivity("Youtube");
+            }
+        });
         return rootView;
 
     }
@@ -62,4 +74,9 @@ public class YoutubeFeedFragment extends Fragment {
         fetchYoutubeData.execute("Hello");
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+
+    }
 }

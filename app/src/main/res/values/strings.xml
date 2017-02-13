@@ -4,4 +4,14 @@
     <string name="player_error">Error initializing YouTube player: %s</string>
     <string name="seek_to">Jump To</string>
     <string name="seek_to_hint">Seconds</string>
+    <string-array name="algorithm_sort_array">
+        <item>None</item>
+        <item>Bubble Sort</item>
+        <item>Merge Sort</item>
+        <item>Insert Sort</item>
+        <item>Selection Sort</item>
+        <item>Quick Sort</item>
+
+
+    </string-array>
 </resources>
