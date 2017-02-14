@@ -12,10 +12,10 @@ import com.example.stevenzafrani.congregate.R;
 import com.example.stevenzafrani.congregate.fragments.AlgorithmFragment;
 
 public class AlgorithmActivity extends BaseActivity {
-    TabItem youtubeButton;
     TabItem algorithmButton;
-    TabItem homeButton;
-    TabLayout homeTab;
+    TabItem sortButton;
+    TabItem searchButton;
+    TabLayout algorithmTab;
     ViewPager viewPager;
 
     public AlgorithmActivity() {
@@ -33,6 +33,16 @@ public class AlgorithmActivity extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        algorithmButton = (TabItem) this.findViewById(R.id.button_select_algorithm);
+        sortButton = (TabItem) this.findViewById(R.id.button_select_sort);
+        searchButton = (TabItem) this.findViewById(R.id.button_select_search);
+        algorithmTab = (TabLayout) this.findViewById(R.id.tab_algorithm);
+        viewPager = (ViewPager) this.findViewById(R.id.viewpager_algorithm);
+        algorithmViewPagerSetup(viewPager);
+
+        algorithmTab.setupWithViewPager(viewPager);
+
     }
 
     @Override
@@ -45,4 +55,7 @@ public class AlgorithmActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void algorithmViewPagerSetup(ViewPager viewpager) {
+
+    }
 }
