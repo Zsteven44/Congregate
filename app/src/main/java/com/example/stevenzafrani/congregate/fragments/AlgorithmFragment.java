@@ -75,13 +75,13 @@ public class AlgorithmFragment extends BaseFragment {
 
                         break;
                     case 2:
-                        new MergeSort(getActivity(), myArray);
+                        algorithmLog = new MergeSort(getActivity(), myArray).getAlgorithmLog();
                         break;
                     case 3:
                         new InsertionSort(getActivity(), myArray);
                         break;
                     case 4:
-                        new SelectionSort(getActivity(), myArray);
+                        algorithmLog = new SelectionSort(getActivity(), myArray).getAlgorithmLog();
                         break;
                     case 5:
                         new QuickSort(getActivity(), myArray);

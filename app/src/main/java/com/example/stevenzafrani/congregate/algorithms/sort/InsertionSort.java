@@ -4,10 +4,13 @@ package com.example.stevenzafrani.congregate.algorithms.sort;
 import android.app.Activity;
 import android.util.Log;
 
+import com.example.stevenzafrani.congregate.models.AlgorithmLog;
+import com.example.stevenzafrani.congregate.models.AlgorithmPass;
+
 import java.util.Arrays;
 
 public class InsertionSort extends BaseSort {
-
+    private AlgorithmLog algorithmLog = new AlgorithmLog();
 
     public InsertionSort(Activity activty, int[] array) {
         super(activty);
@@ -22,10 +25,15 @@ public class InsertionSort extends BaseSort {
                     array[j-1] = temp;
                 }
             }
-            Log.v(SelectionSort.class.getSimpleName(), "Pass " + i + " " + Arrays.toString(array));
+            int[] displayArray = Arrays.copyOf(array, array.length);
+            AlgorithmPass algorithmPass = new AlgorithmPass(i, displayArray);
+            algorithmLog.add(algorithmPass);
+
         }
+    }
 
 
-
+    public AlgorithmLog getAlgorithmLog() {
+        return algorithmLog;
     }
 }

@@ -36,4 +36,8 @@ public class SelectionSort extends BaseSort{
 
 
     }
+    public AlgorithmLog getAlgorithmLog() {
+        return algorithmLog;
+    }
+
 }

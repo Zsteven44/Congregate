@@ -36,9 +36,8 @@ public class BubbleSort extends BaseSort {
             Log.v(BubbleSort.class.getSimpleName(), "Loop Pass " + Integer.toString(n-i) + " " + Arrays.toString(array));
             Log.v(BubbleSort.class.getSimpleName(), "Log Pass: " + Integer.toString(algorithmLog.get(20-i).getPassNumber())+Arrays.toString(algorithmLog.get(20-i).getArrayValues()));
         }
-        printResult(array);
-
     }
+
     public AlgorithmLog getAlgorithmLog() {
         return algorithmLog;
     }
@@ -54,9 +53,6 @@ public class BubbleSort extends BaseSort {
 
     }
 
-    public void printResult(int array[]) {
-        Log.v(BubbleSort.class.getSimpleName(), Arrays.toString(array));
-    }
 
 
 }
