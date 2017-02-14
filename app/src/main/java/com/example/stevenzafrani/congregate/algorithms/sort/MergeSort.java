@@ -1,15 +1,21 @@
 package com.example.stevenzafrani.congregate.algorithms.sort;
 
-import android.content.Context;
+import android.app.Activity;
 import android.util.Log;
+
+import com.example.stevenzafrani.congregate.models.AlgorithmLog;
+import com.example.stevenzafrani.congregate.models.AlgorithmPass;
 
 import java.util.Arrays;
 
-public class MergeSort {
+public class MergeSort extends BaseSort {
+    private AlgorithmLog algorithmLog = new AlgorithmLog();
     int[] array;
     int[] tempArray;
     int length;
-    public MergeSort(Context context, int[] array) {
+    int mergeCounter =0;
+    public MergeSort(Activity activity, int[] array) {
+        super(activity);
         this.array = array;
         this.length =array.length;
         this.tempArray = new int[length];
@@ -24,13 +30,20 @@ public class MergeSort {
             mergeSort(lowerIndex, middle);
             mergeSort(middle+1, higherIndex);
             mergeParts(lowerIndex, middle, higherIndex);
+
+            int[] displayArray = Arrays.copyOf(array, array.length);
+            AlgorithmPass algorithmPass = new AlgorithmPass(mergeCounter, displayArray);
+            algorithmLog.add(algorithmPass);
+            mergeCounter+=1;
         }
+
 
     }
 
     public void mergeParts(int lowerIndex, int midIndex, int highIndex) {
         for (int i = lowerIndex; i <= highIndex; i++) {
             tempArray[i]= array[i];
+
         }
         int i = lowerIndex;
         int j = midIndex + 1;
@@ -50,7 +63,13 @@ public class MergeSort {
             k++;
             i++;
         }
-        Log.v(MergeSort.class.getSimpleName(), "Merging parts " + Arrays.toString(array));
-
+        int[] displayArray = Arrays.copyOf(array, array.length);
+        AlgorithmPass algorithmPass = new AlgorithmPass(mergeCounter, displayArray);
+        algorithmLog.add(algorithmPass);
     }
+
+    public AlgorithmLog getAlgorithmLog() {
+        return algorithmLog;
+    }
+
 }

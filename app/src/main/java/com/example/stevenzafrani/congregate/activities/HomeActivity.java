@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,9 +15,7 @@ import com.example.stevenzafrani.congregate.fragments.AlgorithmFragment;
 import com.example.stevenzafrani.congregate.fragments.HomeFragment;
 import com.example.stevenzafrani.congregate.fragments.YoutubeFeedFragment;
 
-import static com.example.stevenzafrani.congregate.R.id.container;
-
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
+public class HomeActivity extends BaseActivity implements View.OnClickListener {
     TabItem youtubeButton;
     TabItem algorithmButton;
     TabItem homeButton;
@@ -33,12 +30,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_home);
 
         if (savedInstanceState ==null) {
-            getSupportFragmentManager().beginTransaction().add(container, new HomeFragment()).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.container, new HomeFragment()).commit();
 
 
         }

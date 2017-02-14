@@ -1,15 +1,22 @@
 package com.example.stevenzafrani.congregate.algorithms.sort;
 
 
-import android.content.Context;
+import android.app.Activity;
 import android.util.Log;
+
+import com.example.stevenzafrani.congregate.models.AlgorithmLog;
+import com.example.stevenzafrani.congregate.models.AlgorithmPass;
 
 import java.util.Arrays;
 
-public class QuickSort {
+public class QuickSort extends BaseSort{
+    private AlgorithmLog algorithmLog = new AlgorithmLog();
     int temp;
     int[] array;
-    public QuickSort(Context context,int[] array) {
+    int sortCounter =0;
+
+    public QuickSort(Activity activity, int[] array) {
+        super(activity);
         this.array = array;
         int minIndex = 0;
         int maxIndex = array.length-1;
@@ -47,6 +54,10 @@ public class QuickSort {
         if (i < maxIndex) {
             quickSorting(i, maxIndex);
         }
+        int[] displayArray = Arrays.copyOf(array, array.length);
+        AlgorithmPass algorithmPass = new AlgorithmPass(sortCounter, displayArray);
+        algorithmLog.add(algorithmPass);
+        sortCounter+=1;
     }
 
     public void exchangeNumbers(int i, int j) {
@@ -57,6 +68,8 @@ public class QuickSort {
 
     }
 
-
+    public AlgorithmLog getAlgorithmLog() {
+        return algorithmLog;
+    }
 
 }
