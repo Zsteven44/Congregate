@@ -2,7 +2,6 @@ package com.example.stevenzafrani.congregate.algorithms.sort;
 
 
 import android.app.Activity;
-import android.util.Log;
 
 import com.example.stevenzafrani.congregate.models.AlgorithmLog;
 import com.example.stevenzafrani.congregate.models.AlgorithmPass;
@@ -16,7 +15,6 @@ public class InsertionSort extends BaseSort {
         super(activty);
         int n = array.length;
         int temp;
-        Log.v(InsertionSort.class.getSimpleName(), Arrays.toString(array));
         for (int i = 1; i < n; i++) {
             for (int j = i; j>0; j--) {
                 if (array[j] < array[j-1]) {

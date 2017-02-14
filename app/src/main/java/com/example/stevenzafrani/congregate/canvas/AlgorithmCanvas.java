@@ -32,7 +32,7 @@ public class AlgorithmCanvas extends Drawable {
         int rectSpacing;
         Paint p = new Paint();
         p.setColor(Color.BLACK);
-        p.setTextSize(13);
+        p.setTextSize(16);
         canvas.drawColor(Color.WHITE);
         rectWidth = canvas.getWidth() / size;
         rectSpacing = rectWidth / 5;
