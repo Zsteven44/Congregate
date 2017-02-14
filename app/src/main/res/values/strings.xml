@@ -12,6 +12,8 @@
         <item>Selection Sort</item>
         <item>Quick Sort</item>
 
-
     </string-array>
+
+
+    <string name="description_bubble_sort">Average and worst case complexity of bubble sort is O(n2). Also, it makes O(n2) swaps in the worst case. Bubble sort is adaptive. It means that for almost sorted array it gives O(n) estimation. Avoid implementations, which don\'t check if the array is already sorted on every step (any swaps made). This check is necessary, in order to preserve adaptive property.</string>
 </resources>

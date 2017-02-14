@@ -1,20 +1,20 @@
 package com.example.stevenzafrani.congregate.algorithms.sort;
 
 import android.app.Activity;
-import android.util.Log;
 
-import com.example.stevenzafrani.congregate.models.AlgorithmLog;
-import com.example.stevenzafrani.congregate.models.AlgorithmPass;
+import com.example.stevenzafrani.congregate.R;
+import com.example.stevenzafrani.congregate.models.AlgorithmLogSort;
+import com.example.stevenzafrani.congregate.models.AlgorithmPassSort;
 
 import java.util.Arrays;
 
 public class BubbleSort extends BaseSort {
-    private AlgorithmLog algorithmLog = new AlgorithmLog();
+    private AlgorithmLogSort algorithmLog = new AlgorithmLogSort();
+    private String DESCRIPTION = String.valueOf(R.string.description_bubble_sort);
 
     public BubbleSort(final Activity activity,
                       final int array[]) {
         super(activity);
-        Log.v(BubbleSort.class.getSimpleName(), Arrays.toString(array));
 
         int n = array.length;
         int k;
@@ -27,18 +27,13 @@ public class BubbleSort extends BaseSort {
 
                 }
             }
-            /**
-             *  The Algorithm Log statements happen here. This is used for the time-lapse display of the sort.
-             */
             int[] tempArray = Arrays.copyOf(array, array.length);
-            AlgorithmPass algorithmPass = new AlgorithmPass(n-i, tempArray);
+            AlgorithmPassSort algorithmPass = new AlgorithmPassSort(n-i, tempArray);
             algorithmLog.add(algorithmPass);
-            Log.v(BubbleSort.class.getSimpleName(), "Loop Pass " + Integer.toString(n-i) + " " + Arrays.toString(array));
-            Log.v(BubbleSort.class.getSimpleName(), "Log Pass: " + Integer.toString(algorithmLog.get(20-i).getPassNumber())+Arrays.toString(algorithmLog.get(20-i).getArrayValues()));
         }
     }
 
-    public AlgorithmLog getAlgorithmLog() {
+    public AlgorithmLogSort getAlgorithmLog() {
         return algorithmLog;
     }
 
