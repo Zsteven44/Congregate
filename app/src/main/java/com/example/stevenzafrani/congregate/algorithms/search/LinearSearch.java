@@ -11,19 +11,19 @@ public class LinearSearch extends BaseSearch {
 
     public LinearSearch(@NonNull final Activity activity,
                         int[] array,
-                        int valueZ) {
+                        int key) {
         super(activity);
 
-        performSearch(array, valueZ);
+        performSearch(array, key);
 
 
     }
 
 
-     private int performSearch(int[] array, int valueZ) {
-
-        for (int i = 0; i<array.length; i++) {
-            if (Integer.valueOf(array[i]) == valueZ) {
+     private int performSearch(int[] array, int key) {
+        int size = array.length;
+        for (int i = 0; i<size; i++) {
+            if ((array[i]) == key) {
                 return i;
             }
         }
