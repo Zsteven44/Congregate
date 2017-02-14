@@ -4,11 +4,17 @@ package com.example.stevenzafrani.congregate.algorithms.sort;
 import android.app.Activity;
 import android.util.Log;
 
+import com.example.stevenzafrani.congregate.models.AlgorithmLog;
+import com.example.stevenzafrani.congregate.models.AlgorithmPass;
+
 import java.util.Arrays;
 
 public class QuickSort extends BaseSort{
+    private AlgorithmLog algorithmLog = new AlgorithmLog();
     int temp;
     int[] array;
+    int sortCounter =0;
+
     public QuickSort(Activity activity, int[] array) {
         super(activity);
         this.array = array;
@@ -48,6 +54,10 @@ public class QuickSort extends BaseSort{
         if (i < maxIndex) {
             quickSorting(i, maxIndex);
         }
+        int[] displayArray = Arrays.copyOf(array, array.length);
+        AlgorithmPass algorithmPass = new AlgorithmPass(sortCounter, displayArray);
+        algorithmLog.add(algorithmPass);
+        sortCounter+=1;
     }
 
     public void exchangeNumbers(int i, int j) {
