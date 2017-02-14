@@ -21,7 +21,7 @@ import com.example.stevenzafrani.congregate.algorithms.sort.MergeSort;
 import com.example.stevenzafrani.congregate.algorithms.sort.QuickSort;
 import com.example.stevenzafrani.congregate.algorithms.sort.SelectionSort;
 import com.example.stevenzafrani.congregate.canvas.AlgorithmCanvas;
-import com.example.stevenzafrani.congregate.models.AlgorithmLog;
+import com.example.stevenzafrani.congregate.models.AlgorithmLogSort;
 
 import java.util.Arrays;
 
@@ -31,7 +31,7 @@ public class AlgorithmFragment extends BaseFragment {
     private int[] finishedArray;
     private boolean inProgress =false;
 
-    private AlgorithmLog algorithmLog;
+    private AlgorithmLogSort algorithmLog;
     int i;
     private ImageView drawableCanvas;
     Handler handler = new Handler();
@@ -52,7 +52,7 @@ public class AlgorithmFragment extends BaseFragment {
         myArray = new int[20];
         newArray = new int[20];
         finishedArray = new int[20];
-        algorithmLog = new AlgorithmLog();
+        algorithmLog = new AlgorithmLogSort();
 
         drawableCanvas= (ImageView) getActivity().findViewById(R.id.imageView_algorithm);
 
@@ -65,57 +65,32 @@ public class AlgorithmFragment extends BaseFragment {
                 algorithmLog.clear();
                 switch (j) {
                     case 0:
-                        for (int i = 0; i <myArray.length; i++) {
-                            myArray[i] = (int)(Math.random()*100);
-                        }
-                        newArray = Arrays.copyOf(myArray, myArray.length);
-                        finishedArray = Arrays.copyOf(myArray, myArray.length);
-                        drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray,finishedArray));
-
+                        generateMyArray();
+                        setArrayData();
                         break;
                     case 1:
-                        for (int i = 0; i <myArray.length; i++) {
-                            myArray[i] = (int)(Math.random()*100);
-                        }
-                        newArray = Arrays.copyOf(myArray, myArray.length);
-                        finishedArray = Arrays.copyOf(myArray, myArray.length);
-                        drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray,finishedArray));
+                        generateMyArray();
+                        setArrayData();
                         algorithmLog = new BubbleSort(getActivity(), finishedArray).getAlgorithmLog();
                         break;
                     case 2:
-                        for (int i = 0; i <myArray.length; i++) {
-                            myArray[i] = (int)(Math.random()*100);
-                        }
-                        newArray = Arrays.copyOf(myArray, myArray.length);
-                        finishedArray = Arrays.copyOf(myArray, myArray.length);
-                        drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray,finishedArray));
+                        generateMyArray();
+                        setArrayData();
                         algorithmLog = new MergeSort(getActivity(),finishedArray).getAlgorithmLog();
                         break;
                     case 3:
-                        for (int i = 0; i <myArray.length; i++) {
-                            myArray[i] = (int)(Math.random()*100);
-                        }
-                        newArray = Arrays.copyOf(myArray, myArray.length);
-                        finishedArray = Arrays.copyOf(myArray, myArray.length);
-                        drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray,finishedArray));
+                        generateMyArray();
+                        setArrayData();
                         algorithmLog = new InsertionSort(getActivity(), finishedArray).getAlgorithmLog();
                         break;
                     case 4:
-                        for (int i = 0; i <myArray.length; i++) {
-                            myArray[i] = (int)(Math.random()*100);
-                        }
-                        newArray = Arrays.copyOf(myArray, myArray.length);
-                        finishedArray = Arrays.copyOf(myArray, myArray.length);
-                        drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray,finishedArray));
+                        generateMyArray();
+                        setArrayData();
                         algorithmLog = new SelectionSort(getActivity(), finishedArray).getAlgorithmLog();
                         break;
                     case 5:
-                        for (int i = 0; i <myArray.length; i++) {
-                            myArray[i] = (int)(Math.random()*100);
-                        }
-                        newArray = Arrays.copyOf(myArray, myArray.length);
-                        finishedArray = Arrays.copyOf(myArray, myArray.length);
-                        drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray,finishedArray));
+                        generateMyArray();
+                        setArrayData();
                         algorithmLog = new QuickSort(getActivity(), finishedArray).getAlgorithmLog();
                         break;
                     default:
@@ -146,7 +121,7 @@ public class AlgorithmFragment extends BaseFragment {
 
     }
 
-    public void runSimulation(@NonNull final AlgorithmLog algoLog, final Spinner spinner) {
+    public void runSimulation(@NonNull final AlgorithmLogSort algoLog, final Spinner spinner) {
         i =0;
         //finishedArray = algoLog.get(algoLog.size()-1).getArrayValues();
         if (algoLog.size()>1) {
@@ -170,7 +145,15 @@ public class AlgorithmFragment extends BaseFragment {
             };
         handler.post(runnable);
         }
-
-
+    }
+    private void setArrayData() {
+        newArray = Arrays.copyOf(myArray, myArray.length);
+        finishedArray = Arrays.copyOf(myArray, myArray.length);
+        drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray,finishedArray));
+    }
+    private void generateMyArray() {
+        for (int i = 0; i <myArray.length; i++) {
+            myArray[i] = (int)(Math.random()*100);
+        }
     }
 }

@@ -74,12 +74,12 @@ public class FetchYoutubeData extends AsyncTask<String, Void, YoutubeVideo[]> {
             videoThumbnailDefault   = videoItem.getJSONObject(OWM_SNIPPET).getJSONObject(OWM_THUMBNAIL).getJSONObject(OWM_DEFAULT).getString(OWM_THUMBNAIL_URL);
             videoThumbnailMedium    = videoItem.getJSONObject(OWM_SNIPPET).getJSONObject(OWM_THUMBNAIL).getJSONObject(OWM_MEDIUM).getString(OWM_THUMBNAIL_URL);
             videoThumbnailHigh      = videoItem.getJSONObject(OWM_SNIPPET).getJSONObject(OWM_THUMBNAIL).getJSONObject(OWM_HIGH).getString(OWM_THUMBNAIL_URL);
-            videoThumbnailStandard  = videoItem.getJSONObject(OWM_SNIPPET).getJSONObject(OWM_THUMBNAIL).getJSONObject(OWM_STANDARD).getString(OWM_THUMBNAIL_URL);
+
 
 
 
             youtubeItems[i] = new YoutubeVideo(videoTitle, videoDescription, videoId, videoLink,
-                    videoThumbnailDefault, videoThumbnailMedium, videoThumbnailHigh, videoThumbnailStandard);
+                    videoThumbnailDefault, videoThumbnailMedium, videoThumbnailHigh, null);
 
         }
         for (YoutubeVideo item: youtubeItems){

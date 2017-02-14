@@ -32,7 +32,7 @@ public class AlgorithmCanvas extends Drawable {
         int rectSpacing;
         Paint p = new Paint();
         p.setColor(Color.BLACK);
-        p.setTextSize(16);
+        p.setTextSize(20);
         canvas.drawColor(Color.WHITE);
         rectWidth = canvas.getWidth() / size;
         rectSpacing = rectWidth / 5;
@@ -45,7 +45,7 @@ public class AlgorithmCanvas extends Drawable {
                     (rectSpacing/2) + (i*rectWidth) + (rectWidth - (rectSpacing/2)),
                     (canvas.getHeight()/3)-40,
                     p);
-            canvas.drawText(Integer.toString(valueArray[i]),(rectWidth/2) + (i*rectWidth) - 4,(canvas.getHeight()/3) - 20,p);
+            canvas.drawText(Integer.toString(valueArray[i]),(rectWidth/2) + (i*rectWidth) - 6,(canvas.getHeight()/3) - 20,p);
         }
 
         for (int i = 0; i < size; i++) {
@@ -55,7 +55,7 @@ public class AlgorithmCanvas extends Drawable {
                     (rectSpacing/2) + (i*rectWidth) + (rectWidth - (rectSpacing/2)),
                     (2*canvas.getHeight()/3-40),
                     p);
-            canvas.drawText(Integer.toString(changingArray[i]),(rectWidth/2) + (i*rectWidth) - 4,(2*canvas.getHeight()/3) - 20,p);
+            canvas.drawText(Integer.toString(changingArray[i]),(rectWidth/2) + (i*rectWidth) - 6,(2*canvas.getHeight()/3) - 20,p);
         }
 
         for (int i = 0; i < size; i++) {
@@ -65,7 +65,7 @@ public class AlgorithmCanvas extends Drawable {
                     (rectSpacing/2) + (i*rectWidth) + (rectWidth - (rectSpacing/2)),
                     (canvas.getHeight() - 40),
                     p);
-            canvas.drawText(Integer.toString(finishedArray[i]),(rectWidth/2) + (i*rectWidth) - 4,(canvas.getHeight()) - 20,p);
+            canvas.drawText(Integer.toString(finishedArray[i]),(rectWidth/2) + (i*rectWidth) - 6,(canvas.getHeight()) - 20,p);
         }
 
 

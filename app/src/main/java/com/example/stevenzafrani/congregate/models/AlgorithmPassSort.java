@@ -2,11 +2,11 @@ package com.example.stevenzafrani.congregate.models;
 
 
 
-public class AlgorithmPass {
+public class AlgorithmPassSort {
     public int passNumber;
     public int[] arrayValues;
 
-    public AlgorithmPass(int passNumber, int[] array) {
+    public AlgorithmPassSort(int passNumber, int[] array) {
         this.passNumber = passNumber;
         this.arrayValues = array;
     }
