@@ -16,7 +16,7 @@ public class InsertionSort extends BaseSort {
         super(activty);
         int n = array.length;
         int temp;
-        Log.v(SelectionSort.class.getSimpleName(), Arrays.toString(array));
+        Log.v(InsertionSort.class.getSimpleName(), Arrays.toString(array));
         for (int i = 1; i < n; i++) {
             for (int j = i; j>0; j--) {
                 if (array[j] < array[j-1]) {

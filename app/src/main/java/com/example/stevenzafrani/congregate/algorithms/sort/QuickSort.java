@@ -68,6 +68,8 @@ public class QuickSort extends BaseSort{
 
     }
 
-
+    public AlgorithmLog getAlgorithmLog() {
+        return algorithmLog;
+    }
 
 }
