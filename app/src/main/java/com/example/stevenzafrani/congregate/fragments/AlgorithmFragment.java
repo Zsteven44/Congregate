@@ -28,10 +28,14 @@ import java.util.Arrays;
 public class AlgorithmFragment extends BaseFragment {
     private int[] myArray;
     private int[] newArray;
+    private boolean inProgress =false;
+
     private AlgorithmLog algorithmLog;
     int i;
     private ImageView drawableCanvas;
     Handler handler = new Handler();
+
+
 
     @Nullable
     @Override
@@ -43,7 +47,7 @@ public class AlgorithmFragment extends BaseFragment {
     @Override
     public void onStart() {
         super.onStart();
-        Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinner_algorithm_sort);
+        final Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinner_algorithm_sort);
         myArray = new int[20];
         newArray = new int[20];
         algorithmLog = new AlgorithmLog();
@@ -85,8 +89,10 @@ public class AlgorithmFragment extends BaseFragment {
                     default:
                         break;
                 }
-                if (algorithmLog.size()>0) {
-                    runSimulation(algorithmLog);
+                if (j !=0) {
+                    inProgress = true;
+                    spinner.setEnabled(!inProgress);
+                    runSimulation(algorithmLog,spinner);
                 }
 
             }
@@ -108,7 +114,7 @@ public class AlgorithmFragment extends BaseFragment {
 
     }
 
-    public void runSimulation(@NonNull final AlgorithmLog algoLog) {
+    public void runSimulation(@NonNull final AlgorithmLog algoLog, final Spinner spinner) {
         i =0;
         if (algoLog.size()>1) {
             final Runnable runnable = new Runnable() {
@@ -122,12 +128,15 @@ public class AlgorithmFragment extends BaseFragment {
                     i++;
                     if (i < algoLog.size()) {
                         handler.postDelayed(this, 500);
+                    } else {
+                        spinner.setEnabled(true);
                     }
+
                 }
             };
         handler.post(runnable);
-        } else{
-            return;
         }
+
+
     }
 }

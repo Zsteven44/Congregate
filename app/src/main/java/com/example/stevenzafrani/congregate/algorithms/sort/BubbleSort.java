@@ -6,7 +6,6 @@ import android.util.Log;
 import com.example.stevenzafrani.congregate.models.AlgorithmLog;
 import com.example.stevenzafrani.congregate.models.AlgorithmPass;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class BubbleSort extends BaseSort {
@@ -28,6 +27,9 @@ public class BubbleSort extends BaseSort {
 
                 }
             }
+            /**
+             *  The Algorithm Log statements happen here. This is used for the time-lapse display of the sort.
+             */
             int[] tempArray = Arrays.copyOf(array, array.length);
             AlgorithmPass algorithmPass = new AlgorithmPass(n-i, tempArray);
             algorithmLog.add(algorithmPass);
@@ -56,8 +58,5 @@ public class BubbleSort extends BaseSort {
         Log.v(BubbleSort.class.getSimpleName(), Arrays.toString(array));
     }
 
-    public void callSimulation(ArrayList<AlgorithmPass> algoLog) {
-
-    }
 
 }
