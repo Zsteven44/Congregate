@@ -20,7 +20,7 @@ import com.example.stevenzafrani.congregate.algorithms.sort.InsertionSort;
 import com.example.stevenzafrani.congregate.algorithms.sort.MergeSort;
 import com.example.stevenzafrani.congregate.algorithms.sort.QuickSort;
 import com.example.stevenzafrani.congregate.algorithms.sort.SelectionSort;
-import com.example.stevenzafrani.congregate.models.AlgorithmCanvas;
+import com.example.stevenzafrani.congregate.canvas.AlgorithmCanvas;
 import com.example.stevenzafrani.congregate.models.AlgorithmLog;
 
 import java.util.Arrays;
@@ -28,6 +28,7 @@ import java.util.Arrays;
 public class AlgorithmFragment extends BaseFragment {
     private int[] myArray;
     private int[] newArray;
+    private int[] finishedArray;
     private boolean inProgress =false;
 
     private AlgorithmLog algorithmLog;
@@ -50,6 +51,7 @@ public class AlgorithmFragment extends BaseFragment {
         final Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinner_algorithm_sort);
         myArray = new int[20];
         newArray = new int[20];
+        finishedArray = new int[20];
         algorithmLog = new AlgorithmLog();
 
         drawableCanvas= (ImageView) getActivity().findViewById(R.id.imageView_algorithm);
@@ -59,7 +61,7 @@ public class AlgorithmFragment extends BaseFragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
 
-                drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray));
+                drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray, finishedArray));
                 algorithmLog.clear();
                 switch (j) {
                     case 0:
@@ -67,24 +69,54 @@ public class AlgorithmFragment extends BaseFragment {
                             myArray[i] = (int)(Math.random()*100);
                         }
                         newArray = Arrays.copyOf(myArray, myArray.length);
-                        drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray));
+                        finishedArray = Arrays.copyOf(myArray, myArray.length);
+                        drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray,finishedArray));
 
                         break;
                     case 1:
-                        algorithmLog = new BubbleSort(getActivity(), myArray).getAlgorithmLog();
-
+                        for (int i = 0; i <myArray.length; i++) {
+                            myArray[i] = (int)(Math.random()*100);
+                        }
+                        newArray = Arrays.copyOf(myArray, myArray.length);
+                        finishedArray = Arrays.copyOf(myArray, myArray.length);
+                        drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray,finishedArray));
+                        algorithmLog = new BubbleSort(getActivity(), finishedArray).getAlgorithmLog();
                         break;
                     case 2:
-                        algorithmLog = new MergeSort(getActivity(), myArray).getAlgorithmLog();
+                        for (int i = 0; i <myArray.length; i++) {
+                            myArray[i] = (int)(Math.random()*100);
+                        }
+                        newArray = Arrays.copyOf(myArray, myArray.length);
+                        finishedArray = Arrays.copyOf(myArray, myArray.length);
+                        drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray,finishedArray));
+                        algorithmLog = new MergeSort(getActivity(),finishedArray).getAlgorithmLog();
                         break;
                     case 3:
-                        algorithmLog = new InsertionSort(getActivity(), myArray).getAlgorithmLog();
+                        for (int i = 0; i <myArray.length; i++) {
+                            myArray[i] = (int)(Math.random()*100);
+                        }
+                        newArray = Arrays.copyOf(myArray, myArray.length);
+                        finishedArray = Arrays.copyOf(myArray, myArray.length);
+                        drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray,finishedArray));
+                        algorithmLog = new InsertionSort(getActivity(), finishedArray).getAlgorithmLog();
                         break;
                     case 4:
-                        algorithmLog = new SelectionSort(getActivity(), myArray).getAlgorithmLog();
+                        for (int i = 0; i <myArray.length; i++) {
+                            myArray[i] = (int)(Math.random()*100);
+                        }
+                        newArray = Arrays.copyOf(myArray, myArray.length);
+                        finishedArray = Arrays.copyOf(myArray, myArray.length);
+                        drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray,finishedArray));
+                        algorithmLog = new SelectionSort(getActivity(), finishedArray).getAlgorithmLog();
                         break;
                     case 5:
-                        algorithmLog = new QuickSort(getActivity(), myArray).getAlgorithmLog();
+                        for (int i = 0; i <myArray.length; i++) {
+                            myArray[i] = (int)(Math.random()*100);
+                        }
+                        newArray = Arrays.copyOf(myArray, myArray.length);
+                        finishedArray = Arrays.copyOf(myArray, myArray.length);
+                        drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray,finishedArray));
+                        algorithmLog = new QuickSort(getActivity(), finishedArray).getAlgorithmLog();
                         break;
                     default:
                         break;
@@ -116,13 +148,15 @@ public class AlgorithmFragment extends BaseFragment {
 
     public void runSimulation(@NonNull final AlgorithmLog algoLog, final Spinner spinner) {
         i =0;
+        //finishedArray = algoLog.get(algoLog.size()-1).getArrayValues();
         if (algoLog.size()>1) {
             final Runnable runnable = new Runnable() {
                 @Override
                 public void run() {
 
-                    drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray, newArray));
                     newArray = algoLog.get(i).getArrayValues();
+                    drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray, newArray, finishedArray));
+
                     Log.v(AlgorithmFragment.class.getSimpleName(), "newArray " + i + ", " + Arrays.toString(newArray));
 
                     i++;

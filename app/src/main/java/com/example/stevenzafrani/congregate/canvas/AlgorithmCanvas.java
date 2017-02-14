@@ -1,4 +1,4 @@
-package com.example.stevenzafrani.congregate.models;
+package com.example.stevenzafrani.congregate.canvas;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -13,14 +13,15 @@ public class AlgorithmCanvas extends Drawable {
     private int size;
     private int valueArray[];
     private int changingArray[];
-    private int finalArray[];
+    private int finishedArray[];
 
     private float scale = 0f; // something between 0 and 1
 
-    public AlgorithmCanvas(int[] array, int[] array2) {
+    public AlgorithmCanvas(int[] array, int[] array2, int[] array3) {
         this.size = array.length;
         this.valueArray = array;
         this.changingArray = array2;
+        this.finishedArray = array3;
 
     }
 
@@ -39,7 +40,7 @@ public class AlgorithmCanvas extends Drawable {
         for (int i = 0; i < size; i++) {
             canvas.drawRect(
                     (rectSpacing/2) + (i*rectWidth),
-                    (canvas.getHeight()/3) - (valueArray[i]+10),
+                    (canvas.getHeight()/3) - (valueArray[i]+25),
                     (rectSpacing/2) + (i*rectWidth) + (rectWidth - (rectSpacing/2)),
                     canvas.getHeight()/3,
                     p);
@@ -49,25 +50,23 @@ public class AlgorithmCanvas extends Drawable {
         for (int i = 0; i < size; i++) {
             canvas.drawRect(
                     (rectSpacing/2) + (i*rectWidth),
-                    (2*canvas.getHeight()/3) - (changingArray[i]+10),
+                    (2*canvas.getHeight()/3) - (changingArray[i]+25),
                     (rectSpacing/2) + (i*rectWidth) + (rectWidth - (rectSpacing/2)),
                     (2*canvas.getHeight()/3),
                     p);
             canvas.drawText(Integer.toString(changingArray[i]),(rectWidth/2) + (i*rectWidth) - 4,(2*canvas.getHeight()/3) + 20,p);
         }
 
-
-        /*
         for (int i = 0; i < size; i++) {
             canvas.drawRect(
                     (rectSpacing/2) + (i*rectWidth),
-                    (canvas.getHeight()) - (finalArray[i]+10),
+                    (canvas.getHeight() -40) - (finishedArray[i]+25),
                     (rectSpacing/2) + (i*rectWidth) + (rectWidth - (rectSpacing/2)),
-                    (canvas.getHeight()),
+                    (canvas.getHeight() - 40),
                     p);
-            canvas.drawText(Integer.toString(finalArray[i]),(rectWidth/2) + (i*rectWidth) - 4,(canvas.getHeight()) + 20,p);
+            canvas.drawText(Integer.toString(finishedArray[i]),(rectWidth/2) + (i*rectWidth) - 4,(canvas.getHeight()) - 20,p);
         }
-        */
+
 
 
     }
