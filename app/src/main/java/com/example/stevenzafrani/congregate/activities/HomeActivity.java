@@ -5,12 +5,16 @@ import android.os.Bundle;
 import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.example.stevenzafrani.congregate.R;
 import com.example.stevenzafrani.congregate.adapters.AdapterHomeViewPager;
+import com.example.stevenzafrani.congregate.clickListeners.DrawerItemClickListener;
 import com.example.stevenzafrani.congregate.fragments.AlgorithmFragment;
 import com.example.stevenzafrani.congregate.fragments.HomeFragment;
 import com.example.stevenzafrani.congregate.fragments.YoutubeFeedFragment;
@@ -21,6 +25,10 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     TabItem homeButton;
     TabLayout homeTab;
     ViewPager viewPager;
+    // Navigation Drawer
+    private String[] mActivityTitles;
+    private DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
 
     public HomeActivity() {
 
@@ -36,9 +44,18 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
         if (savedInstanceState ==null) {
             getSupportFragmentManager().beginTransaction().add(R.id.container, new HomeFragment()).commit();
-
-
         }
+        mActivityTitles = getResources().getStringArray(R.array.navigationDrawerHome);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+
+        // Set the adapter for the list view
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+                R.layout.drawer_list_item, mActivityTitles));
+        // Set the list's click listener
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+
+
     }
 
     @Override

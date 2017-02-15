@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -131,8 +130,6 @@ public class AlgorithmFragment extends BaseFragment {
 
                     newArray = algoLog.get(i).getArrayValues();
                     drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray, newArray, finishedArray));
-
-                    Log.v(AlgorithmFragment.class.getSimpleName(), "newArray " + i + ", " + Arrays.toString(newArray));
 
                     i++;
                     if (i < algoLog.size()) {
