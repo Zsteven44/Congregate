@@ -9,7 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.stevenzafrani.congregate.R;
+import com.example.stevenzafrani.congregate.adapters.AdapterAlgorithmViewPager;
 import com.example.stevenzafrani.congregate.fragments.AlgorithmFragment;
+import com.example.stevenzafrani.congregate.fragments.SearchFragment;
+import com.example.stevenzafrani.congregate.fragments.SortFragment;
 
 public class AlgorithmActivity extends BaseActivity {
     TabItem algorithmButton;
@@ -56,6 +59,12 @@ public class AlgorithmActivity extends BaseActivity {
     }
 
     public void algorithmViewPagerSetup(ViewPager viewpager) {
+        AdapterAlgorithmViewPager adapterAlgorithmViewPager = new AdapterAlgorithmViewPager(getSupportFragmentManager());
+        adapterAlgorithmViewPager.addFragment(new AlgorithmFragment(), "ALGORITHM");
+        adapterAlgorithmViewPager.addFragment(new SortFragment(), "SORT");
+        adapterAlgorithmViewPager.addFragment(new SearchFragment(), "SEARCH");
 
+        viewpager.setAdapter(adapterAlgorithmViewPager);
     }
+
 }
