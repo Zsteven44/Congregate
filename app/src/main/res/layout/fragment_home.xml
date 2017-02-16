@@ -10,14 +10,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="Created by Steven Zafrani"
+        android:text="@string/home_fragment_created_by"
         android:textSize="9dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:text="Select the buttons above to view different functionalities of this app."/>
+        android:text="@string/home_fragment_intro"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:text="@string/home_fragment_section_1"
+        />
+    <ListView
+        android:id="@+id/listView_home_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 
 </LinearLayout>

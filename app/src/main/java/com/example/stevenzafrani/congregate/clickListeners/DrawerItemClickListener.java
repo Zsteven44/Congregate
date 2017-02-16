@@ -37,7 +37,7 @@ public class DrawerItemClickListener implements AdapterView.OnItemClickListener 
         }
 
         Intent intent = new Intent(activity, nextActivity);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         selectItem(intent);
 
 
