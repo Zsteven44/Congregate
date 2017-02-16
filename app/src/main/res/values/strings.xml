@@ -10,7 +10,8 @@
 
     <!-- Menu and Drawers -->
     <string name="menu_drawer_title">Drawer Menu</string>
-
+    <string name="menu_drawer_open">Drawer Open</string>
+    <string name="menu_drawer_close">Drawer Close</string>
     <!-- Algorithms -->
     <string-array name="algorithm_sort_array">
         <item>None</item>

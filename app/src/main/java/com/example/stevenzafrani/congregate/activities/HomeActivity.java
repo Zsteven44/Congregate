@@ -1,11 +1,14 @@
 package com.example.stevenzafrani.congregate.activities;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,8 +30,12 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     TabItem homeButton;
     TabLayout homeTab;
     ViewPager viewPager;
+
     // Navigation Drawer
     private String[] mActivityTitles;
+    private String mTitle;
+    private String mDrawerTitle;
+    private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
 
@@ -46,6 +53,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         if (savedInstanceState ==null) {
             getSupportFragmentManager().beginTransaction().add(R.id.container, new HomeFragment()).commit();
         }
+        mTitle = mDrawerTitle = getTitle().toString();
         mActivityTitles = getResources().getStringArray(R.array.navigationDrawerHome);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -60,7 +68,39 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.activity_toolbar);
         setSupportActionBar(myToolbar);
 
+        mDrawerToggle =new ActionBarDrawerToggle(
+                this,                  /* host Activity */
+                mDrawerLayout,         /* DrawerLayout object */
+                myToolbar,  /* Toolbar */
+                R.string.menu_drawer_open,  /* "open drawer" description for accessibility */
+                R.string.menu_drawer_close  /* "close drawer" description for accessibility */
+        ) {
+            public void onDrawerClosed(View view) {
+                getSupportActionBar().setTitle("Close");
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
 
+            public void onDrawerOpened(View drawerView) {
+                getSupportActionBar().setTitle("Open");
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+        };
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
+
+
+    }
+
+    @Override
+    public void onPostCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onPostCreate(savedInstanceState, persistentState);
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Pass any configuration change to the drawer toggls
+        mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
     @Override
