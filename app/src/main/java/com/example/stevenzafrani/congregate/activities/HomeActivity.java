@@ -47,8 +47,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
     public HomeActivity() {
 
-
-
     }
 
 
@@ -95,28 +93,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         };
         mDrawerLayout.addDrawerListener(mDrawerToggle);
 
-        /**
-         *         enable ActionBar app icon to behave as action to toggle nav drawer
-         *         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-         *         getSupportActionBar().setHomeButtonEnabled(true);
-
-         *
-         */
 
 
-    }
-
-    @Override
-    public void onPostCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onPostCreate(savedInstanceState, persistentState);
-        mDrawerToggle.syncState();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        // Pass any configuration change to the drawer toggls
-        mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
     @Override
@@ -132,6 +110,19 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
         homeTab.setupWithViewPager(viewPager);
 
+    }
+
+    @Override
+    public void onPostCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onPostCreate(savedInstanceState, persistentState);
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Pass any configuration change to the drawer toggls
+        mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
 
