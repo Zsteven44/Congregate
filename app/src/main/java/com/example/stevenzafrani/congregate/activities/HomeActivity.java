@@ -20,7 +20,6 @@ import android.widget.ListView;
 import com.example.stevenzafrani.congregate.R;
 import com.example.stevenzafrani.congregate.adapters.AdapterHomeViewPager;
 import com.example.stevenzafrani.congregate.clickListeners.DrawerItemClickListener;
-import com.example.stevenzafrani.congregate.fragments.AlgorithmFragment;
 import com.example.stevenzafrani.congregate.fragments.HomeFragment;
 import com.example.stevenzafrani.congregate.fragments.YoutubeFeedFragment;
 
@@ -150,7 +149,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         AdapterHomeViewPager homeViewPagerAdapter = new AdapterHomeViewPager(getSupportFragmentManager());
         homeViewPagerAdapter.addFragment(new HomeFragment(), "HOME");
         homeViewPagerAdapter.addFragment(new YoutubeFeedFragment(), "YOUTUBE");
-        homeViewPagerAdapter.addFragment(new AlgorithmFragment(), "ALGORITHM");
         viewpager.setAdapter(homeViewPagerAdapter);
 
     }
