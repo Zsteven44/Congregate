@@ -6,6 +6,7 @@ import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -42,7 +43,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_home);
-
         if (savedInstanceState ==null) {
             getSupportFragmentManager().beginTransaction().add(R.id.container, new HomeFragment()).commit();
         }
@@ -55,6 +55,10 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                 R.layout.drawer_list_item, mActivityTitles));
         // Set the list's click listener
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener(this));
+
+        // Action bar
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.activity_toolbar);
+        setSupportActionBar(myToolbar);
 
 
     }
@@ -74,6 +78,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -83,6 +88,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() ==0) {
+            mDrawerLayout.openDrawer(mDrawerLayout);
+        }
         return super.onOptionsItemSelected(item);
     }
 
