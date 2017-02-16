@@ -25,6 +25,8 @@ import com.example.stevenzafrani.congregate.fragments.HomeFragment;
 import com.example.stevenzafrani.congregate.fragments.YoutubeFeedFragment;
 
 public class HomeActivity extends BaseActivity implements View.OnClickListener {
+
+    // Tab Layout
     TabItem youtubeButton;
     TabItem algorithmButton;
     TabItem homeButton;
@@ -38,6 +40,10 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
+
+    // Action Bar
+    private Toolbar myToolbar;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
 
     public HomeActivity() {
 
@@ -65,27 +71,37 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener(this));
 
         // Action bar
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.activity_toolbar);
+        myToolbar = (Toolbar) findViewById(R.id.activity_toolbar);
         setSupportActionBar(myToolbar);
+        myToolbar.setNavigationIcon(R.drawable.ic_menu_black_24dp);
 
         mDrawerToggle =new ActionBarDrawerToggle(
                 this,                  /* host Activity */
                 mDrawerLayout,         /* DrawerLayout object */
-                myToolbar,  /* Toolbar */
+                myToolbar,             /* Toolbar */
                 R.string.menu_drawer_open,  /* "open drawer" description for accessibility */
                 R.string.menu_drawer_close  /* "close drawer" description for accessibility */
         ) {
             public void onDrawerClosed(View view) {
-                getSupportActionBar().setTitle("Close");
+
+                getSupportActionBar().setTitle("Home");
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
             public void onDrawerOpened(View drawerView) {
-                getSupportActionBar().setTitle("Open");
+                getSupportActionBar().setTitle("Home");
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
         mDrawerLayout.addDrawerListener(mDrawerToggle);
+
+        /**
+         *         enable ActionBar app icon to behave as action to toggle nav drawer
+         *         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+         *         getSupportActionBar().setHomeButtonEnabled(true);
+
+         *
+         */
 
 
     }
@@ -128,9 +144,13 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() ==0) {
-            mDrawerLayout.openDrawer(mDrawerLayout);
+        // Pass the event to ActionBarDrawerToggle, if it returns
+        // true, then it has handled the app icon touch event
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
         }
+        // Handle your other action bar items...
+
         return super.onOptionsItemSelected(item);
     }
 
