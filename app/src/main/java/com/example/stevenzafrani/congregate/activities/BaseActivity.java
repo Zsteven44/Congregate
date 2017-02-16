@@ -10,6 +10,7 @@ import com.example.stevenzafrani.congregate.R;
 
 public abstract class BaseActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

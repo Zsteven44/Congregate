@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Navigation Drawer - Home -->
+    <string-array name="navigationDrawerHome">
+        <item>Home</item>
+        <item>Algorithm</item>
+        <item>API</item>
+    </string-array>
+
+
+
+
+
+
+
+    <!-- Youtube API -->
     <string-array name="youtubeCategoryArray">
         <item>Horror</item>
         <item>Music</item>
