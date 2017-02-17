@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">Congregate</string>
 
+    <!-- Home Fragment -->
+    <string name="home_fragment_created_by">Created by Steven Zafrani</string>
+    <string name="home_fragment_intro">Select the tabs above to view other sections of this activity. The ActionBar menu button can take you to different activities to see algorithms and APIs in action.</string>
+    <string name="home_fragment_section_1">This app utilizes a few dependencies/frameworks</string>
+    <string name="home_fragment_section_1_item_1">Android Support Library which provides additional material design options</string>
+    <string name="home_fragment_section_1_item_2">Youtube API integration allowing user to view videos and data</string>
+    <string name="home_fragment_section_1_item_3">Algorithm classes that visually demonstrate various sort and search processes</string>
+    <string name="home_fragment_section_1_item_4">Picasso for quickly loading web image resources</string>
+
+
     <!-- API -->
     <string name="media_name_youtube">Youtube</string>
     <string name="player_error">Error initializing YouTube player: %s</string>
@@ -10,7 +20,8 @@
 
     <!-- Menu and Drawers -->
     <string name="menu_drawer_title">Drawer Menu</string>
-
+    <string name="menu_drawer_open">Drawer Open</string>
+    <string name="menu_drawer_close">Drawer Close</string>
     <!-- Algorithms -->
     <string-array name="algorithm_sort_array">
         <item>None</item>
@@ -20,6 +31,13 @@
         <item>Selection Sort</item>
         <item>Quick Sort</item>
 
+    </string-array>
+    <string-array name="algorithm_search_array">
+        <item>None</item>
+        <item>Linear Search</item>
+        <item>Binary Search</item>
+        <item>Tree Search</item>
+        <item>Genetic Search</item>
     </string-array>
 
 
