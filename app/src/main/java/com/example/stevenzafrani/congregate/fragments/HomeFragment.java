@@ -40,9 +40,9 @@ public class HomeFragment extends BaseFragment {
 
         listItems = new String[4];
         listItems[0] = getString(R.string.home_fragment_section_1_item_1);
-        listItems[1] = getString(R.string.home_fragment_section_1_item_1);
-        listItems[2] = getString(R.string.home_fragment_section_1_item_1);
-        listItems[3] = getString(R.string.home_fragment_section_1_item_1);
+        listItems[1] = getString(R.string.home_fragment_section_1_item_2);
+        listItems[2] = getString(R.string.home_fragment_section_1_item_3);
+        listItems[3] = getString(R.string.home_fragment_section_1_item_4);
         listAdapter = new ArrayAdapter<String>(getActivity(),R.layout.listview_home_fragment, listItems);
 
         listView.setAdapter(listAdapter);
