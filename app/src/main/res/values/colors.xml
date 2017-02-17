@@ -4,4 +4,29 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorNode">#44AA44</color>
+
+
+    <!-- Primary Colors (500s) for other Themes (toolbars) -->
+    <color name="primaryRed">#F44336</color>
+    <color name="primaryMagenta">#9C27B0</color>
+    <color name="primaryBlue">#3F51B5</color>
+    <color name="primaryWhite">#FFFFFF</color>
+    <color name="primaryDarkGreen">#4CAF50</color>
+    <color name="primaryLightGreen">#8BC34A</color>
+
+    <!-- Secondary Colors (700s) for other Themes (status bars) -->
+
+
+
+    <!-- Tertiary Colors (300s) for other Themes (secondary information) -->
+
+    <!-- Accent Colors (A) for other objects (buttons, sliders, etc...) -->
+    <color name="accentRed">#FF1744</color>
+    <color name="accentMagenta">#D500F9</color>
+    <color name="accentBlue">#00B0FF</color>
+    <color name="accentWhite">#FFFFFF</color>
+    <color name="accentDarkGreen">#00E676</color>
+    <color name="accentLightGreen">#76FF03</color>
+
+
 </resources>
