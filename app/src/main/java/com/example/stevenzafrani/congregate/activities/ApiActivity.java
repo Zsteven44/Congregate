@@ -21,6 +21,7 @@ import android.widget.ListView;
 import com.example.stevenzafrani.congregate.R;
 import com.example.stevenzafrani.congregate.adapters.AdapterHomeViewPager;
 import com.example.stevenzafrani.congregate.clickListeners.DrawerItemClickListener;
+import com.example.stevenzafrani.congregate.fragments.ApiFragment;
 import com.example.stevenzafrani.congregate.fragments.HomeFragment;
 import com.example.stevenzafrani.congregate.fragments.YoutubeFeedFragment;
 
@@ -145,7 +146,7 @@ public class ApiActivity extends BaseActivity {
 
     public void homeViewPagerSetup(ViewPager viewpager) {
         AdapterHomeViewPager homeViewPagerAdapter = new AdapterHomeViewPager(getSupportFragmentManager());
-        homeViewPagerAdapter.addFragment(new HomeFragment(), "HOME");
+        homeViewPagerAdapter.addFragment(new ApiFragment(), "API");
         homeViewPagerAdapter.addFragment(new YoutubeFeedFragment(), "YOUTUBE");
         viewpager.setAdapter(homeViewPagerAdapter);
 
