@@ -14,11 +14,6 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.example.stevenzafrani.congregate.R;
-import com.example.stevenzafrani.congregate.algorithms.sort.BubbleSort;
-import com.example.stevenzafrani.congregate.algorithms.sort.InsertionSort;
-import com.example.stevenzafrani.congregate.algorithms.sort.MergeSort;
-import com.example.stevenzafrani.congregate.algorithms.sort.QuickSort;
-import com.example.stevenzafrani.congregate.algorithms.sort.SelectionSort;
 import com.example.stevenzafrani.congregate.canvas.AlgorithmCanvas;
 import com.example.stevenzafrani.congregate.models.AlgorithmLogSort;
 
@@ -54,7 +49,7 @@ public class SearchFragment extends BaseFragment {
         finishedArray = new int[20];
         algorithmLog = new AlgorithmLogSort();
 
-        drawableCanvas= (ImageView) getActivity().findViewById(R.id.imageView_algorithm);
+        drawableCanvas= (ImageView) getActivity().findViewById(R.id.imageView_algorithm_search);
 
         spinner.setSelection(1, false);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -71,27 +66,22 @@ public class SearchFragment extends BaseFragment {
                     case 1:
                         generateMyArray();
                         setArrayData();
-                        algorithmLog = new BubbleSort(getActivity(), finishedArray).getAlgorithmLog();
                         break;
                     case 2:
                         generateMyArray();
                         setArrayData();
-                        algorithmLog = new MergeSort(getActivity(),finishedArray).getAlgorithmLog();
                         break;
                     case 3:
                         generateMyArray();
                         setArrayData();
-                        algorithmLog = new InsertionSort(getActivity(), finishedArray).getAlgorithmLog();
                         break;
                     case 4:
                         generateMyArray();
                         setArrayData();
-                        algorithmLog = new SelectionSort(getActivity(), finishedArray).getAlgorithmLog();
                         break;
                     case 5:
                         generateMyArray();
                         setArrayData();
-                        algorithmLog = new QuickSort(getActivity(), finishedArray).getAlgorithmLog();
                         break;
                     default:
                         break;
@@ -123,7 +113,6 @@ public class SearchFragment extends BaseFragment {
 
     public void runSimulation(@NonNull final AlgorithmLogSort algoLog, final Spinner spinner) {
         i =0;
-        //finishedArray = algoLog.get(algoLog.size()-1).getArrayValues();
         if (algoLog.size()>1) {
             final Runnable runnable = new Runnable() {
                 @Override
