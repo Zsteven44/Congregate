@@ -3,7 +3,6 @@ package com.example.stevenzafrani.congregate.fragments;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +15,6 @@ import android.widget.Spinner;
 import com.example.stevenzafrani.congregate.R;
 import com.example.stevenzafrani.congregate.canvas.AlgorithmCanvas;
 import com.example.stevenzafrani.congregate.models.AlgorithmLogSort;
-
-import java.util.Arrays;
 
 public class SearchFragment extends BaseFragment {
 
@@ -60,36 +57,28 @@ public class SearchFragment extends BaseFragment {
                 algorithmLog.clear();
                 switch (j) {
                     case 0:
-                        generateMyArray();
-                        setArrayData();
+
                         break;
                     case 1:
-                        generateMyArray();
-                        setArrayData();
+
                         break;
                     case 2:
-                        generateMyArray();
-                        setArrayData();
+
                         break;
                     case 3:
-                        generateMyArray();
-                        setArrayData();
+
                         break;
                     case 4:
-                        generateMyArray();
-                        setArrayData();
+
                         break;
                     case 5:
-                        generateMyArray();
-                        setArrayData();
+
                         break;
                     default:
                         break;
                 }
                 if (j !=0) {
-                    inProgress = true;
-                    spinner.setEnabled(!inProgress);
-                    runSimulation(algorithmLog,spinner);
+
                 }
 
             }
@@ -111,37 +100,14 @@ public class SearchFragment extends BaseFragment {
 
     }
 
-    public void runSimulation(@NonNull final AlgorithmLogSort algoLog, final Spinner spinner) {
-        i =0;
-        if (algoLog.size()>1) {
-            final Runnable runnable = new Runnable() {
-                @Override
-                public void run() {
+    public void runSimulation() {
 
-                    newArray = algoLog.get(i).getArrayValues();
-                    drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray, newArray, finishedArray));
-
-                    i++;
-                    if (i < algoLog.size()) {
-                        handler.postDelayed(this, 500);
-                    } else {
-                        spinner.setEnabled(true);
-                    }
-
-                }
-            };
-            handler.post(runnable);
-        }
     }
     private void setArrayData() {
-        newArray = Arrays.copyOf(myArray, myArray.length);
-        finishedArray = Arrays.copyOf(myArray, myArray.length);
-        drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray,finishedArray));
+
     }
     private void generateMyArray() {
-        for (int i = 0; i <myArray.length; i++) {
-            myArray[i] = (int)(Math.random()*100);
-        }
+
     }
 
 }
