@@ -9,7 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 
 
-public class AlgorithmCanvas extends Drawable {
+public class AlgorithmSearchCanvas extends Drawable {
     private int size;
     private int valueArray[];
     private int changingArray[];
@@ -17,7 +17,7 @@ public class AlgorithmCanvas extends Drawable {
 
     private float scale = 0f; // something between 0 and 1
 
-    public AlgorithmCanvas(int[] array, int[] array2, int[] array3) {
+    public AlgorithmSearchCanvas(int[] array, int[] array2, int[] array3) {
         this.size = array.length;
         this.valueArray = array;
         this.changingArray = array2;
