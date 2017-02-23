@@ -122,7 +122,6 @@ public class SortFragment extends BaseFragment {
 
     public void runSimulation(@NonNull final AlgorithmLogSort algoLog, final Spinner spinner) {
         i =0;
-        //finishedArray = algoLog.get(algoLog.size()-1).getArrayValues();
         if (algoLog.size()>1) {
             final Runnable runnable = new Runnable() {
                 @Override

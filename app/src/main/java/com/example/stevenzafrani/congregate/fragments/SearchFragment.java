@@ -24,7 +24,7 @@ public class SearchFragment extends BaseFragment {
     private int[] finishedArray;
     private boolean inProgress =false;
 
-    private AlgorithmLogSort algorithmLog;
+    private AlgorithmLogSearch algorithmLog;
     int i;
     private ImageView drawableCanvas;
     Handler handler = new Handler();
@@ -45,7 +45,7 @@ public class SearchFragment extends BaseFragment {
         myArray = new int[20];
         newArray = new int[20];
         finishedArray = new int[20];
-        algorithmLog = new AlgorithmLogSort();
+        algorithmLog = new AlgorithmLogSearch();
 
         drawableCanvas= (ImageView) getActivity().findViewById(R.id.imageView_algorithm_search);
 
@@ -108,7 +108,9 @@ public class SearchFragment extends BaseFragment {
 
     }
     private void generateMyArray() {
-
+        for (int i=0; i<myArray.length; i++) {
+            myArray[i] = (int) (Math.random()*100);
+        }
     }
 
 }
