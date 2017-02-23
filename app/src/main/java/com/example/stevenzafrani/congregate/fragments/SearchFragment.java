@@ -13,7 +13,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.example.stevenzafrani.congregate.R;
-import com.example.stevenzafrani.congregate.canvas.AlgorithmSortCanvas;
+import com.example.stevenzafrani.congregate.canvas.AlgorithmSearchCanvas;
+import com.example.stevenzafrani.congregate.models.AlgorithmLogSearch;
 import com.example.stevenzafrani.congregate.models.AlgorithmLogSort;
 
 public class SearchFragment extends BaseFragment {
@@ -53,7 +54,7 @@ public class SearchFragment extends BaseFragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
 
-                drawableCanvas.setImageDrawable(new AlgorithmSortCanvas(myArray,newArray, finishedArray));
+                drawableCanvas.setImageDrawable(new AlgorithmSearchCanvas(myArray,newArray, finishedArray));
                 algorithmLog.clear();
                 switch (j) {
                     case 0:
@@ -101,7 +102,7 @@ public class SearchFragment extends BaseFragment {
     }
 
     public void runSimulation() {
-
+        AlgorithmLogSearch algorithmLogSearch;
     }
     private void setArrayData() {
 

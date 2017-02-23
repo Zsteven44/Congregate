@@ -43,14 +43,10 @@
             android:textSize="9dp"
             />
     </android.support.design.widget.TextInputLayout>
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <ImageView
+    <ImageView
             android:id="@+id/imageView_algorithm_search"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />
-    </LinearLayout>
+
 
 </LinearLayout>
