@@ -3,7 +3,6 @@ package com.example.stevenzafrani.congregate.fragments;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +13,9 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.example.stevenzafrani.congregate.R;
-import com.example.stevenzafrani.congregate.canvas.AlgorithmCanvas;
+import com.example.stevenzafrani.congregate.canvas.AlgorithmSearchCanvas;
+import com.example.stevenzafrani.congregate.models.AlgorithmLogSearch;
 import com.example.stevenzafrani.congregate.models.AlgorithmLogSort;
-
-import java.util.Arrays;
 
 public class SearchFragment extends BaseFragment {
 
@@ -26,7 +24,7 @@ public class SearchFragment extends BaseFragment {
     private int[] finishedArray;
     private boolean inProgress =false;
 
-    private AlgorithmLogSort algorithmLog;
+    private AlgorithmLogSearch algorithmLog;
     int i;
     private ImageView drawableCanvas;
     Handler handler = new Handler();
@@ -47,7 +45,7 @@ public class SearchFragment extends BaseFragment {
         myArray = new int[20];
         newArray = new int[20];
         finishedArray = new int[20];
-        algorithmLog = new AlgorithmLogSort();
+        algorithmLog = new AlgorithmLogSearch();
 
         drawableCanvas= (ImageView) getActivity().findViewById(R.id.imageView_algorithm_search);
 
@@ -56,40 +54,32 @@ public class SearchFragment extends BaseFragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
 
-                drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray, finishedArray));
+                drawableCanvas.setImageDrawable(new AlgorithmSearchCanvas(myArray,newArray, finishedArray));
                 algorithmLog.clear();
                 switch (j) {
                     case 0:
-                        generateMyArray();
-                        setArrayData();
+
                         break;
                     case 1:
-                        generateMyArray();
-                        setArrayData();
+
                         break;
                     case 2:
-                        generateMyArray();
-                        setArrayData();
+
                         break;
                     case 3:
-                        generateMyArray();
-                        setArrayData();
+
                         break;
                     case 4:
-                        generateMyArray();
-                        setArrayData();
+
                         break;
                     case 5:
-                        generateMyArray();
-                        setArrayData();
+
                         break;
                     default:
                         break;
                 }
                 if (j !=0) {
-                    inProgress = true;
-                    spinner.setEnabled(!inProgress);
-                    runSimulation(algorithmLog,spinner);
+
                 }
 
             }
@@ -111,36 +101,15 @@ public class SearchFragment extends BaseFragment {
 
     }
 
-    public void runSimulation(@NonNull final AlgorithmLogSort algoLog, final Spinner spinner) {
-        i =0;
-        if (algoLog.size()>1) {
-            final Runnable runnable = new Runnable() {
-                @Override
-                public void run() {
-
-                    newArray = algoLog.get(i).getArrayValues();
-                    drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray, newArray, finishedArray));
-
-                    i++;
-                    if (i < algoLog.size()) {
-                        handler.postDelayed(this, 500);
-                    } else {
-                        spinner.setEnabled(true);
-                    }
-
-                }
-            };
-            handler.post(runnable);
-        }
+    public void runSimulation() {
+        AlgorithmLogSearch algorithmLogSearch;
     }
     private void setArrayData() {
-        newArray = Arrays.copyOf(myArray, myArray.length);
-        finishedArray = Arrays.copyOf(myArray, myArray.length);
-        drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray,finishedArray));
+
     }
     private void generateMyArray() {
-        for (int i = 0; i <myArray.length; i++) {
-            myArray[i] = (int)(Math.random()*100);
+        for (int i=0; i<myArray.length; i++) {
+            myArray[i] = (int) (Math.random()*100);
         }
     }
 

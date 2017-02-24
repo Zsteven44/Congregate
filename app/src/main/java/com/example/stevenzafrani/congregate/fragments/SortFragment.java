@@ -19,7 +19,7 @@ import com.example.stevenzafrani.congregate.algorithms.sort.InsertionSort;
 import com.example.stevenzafrani.congregate.algorithms.sort.MergeSort;
 import com.example.stevenzafrani.congregate.algorithms.sort.QuickSort;
 import com.example.stevenzafrani.congregate.algorithms.sort.SelectionSort;
-import com.example.stevenzafrani.congregate.canvas.AlgorithmCanvas;
+import com.example.stevenzafrani.congregate.canvas.AlgorithmSortCanvas;
 import com.example.stevenzafrani.congregate.models.AlgorithmLogSort;
 
 import java.util.Arrays;
@@ -60,7 +60,7 @@ public class SortFragment extends BaseFragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
 
-                drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray, finishedArray));
+                drawableCanvas.setImageDrawable(new AlgorithmSortCanvas(myArray,newArray, finishedArray));
                 algorithmLog.clear();
                 switch (j) {
                     case 0:
@@ -122,14 +122,13 @@ public class SortFragment extends BaseFragment {
 
     public void runSimulation(@NonNull final AlgorithmLogSort algoLog, final Spinner spinner) {
         i =0;
-        //finishedArray = algoLog.get(algoLog.size()-1).getArrayValues();
         if (algoLog.size()>1) {
             final Runnable runnable = new Runnable() {
                 @Override
                 public void run() {
 
                     newArray = algoLog.get(i).getArrayValues();
-                    drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray, newArray, finishedArray));
+                    drawableCanvas.setImageDrawable(new AlgorithmSortCanvas(myArray, newArray, finishedArray));
 
                     i++;
                     if (i < algoLog.size()) {
@@ -146,7 +145,7 @@ public class SortFragment extends BaseFragment {
     private void setArrayData() {
         newArray = Arrays.copyOf(myArray, myArray.length);
         finishedArray = Arrays.copyOf(myArray, myArray.length);
-        drawableCanvas.setImageDrawable(new AlgorithmCanvas(myArray,newArray,finishedArray));
+        drawableCanvas.setImageDrawable(new AlgorithmSortCanvas(myArray,newArray,finishedArray));
     }
     private void generateMyArray() {
         for (int i = 0; i <myArray.length; i++) {
