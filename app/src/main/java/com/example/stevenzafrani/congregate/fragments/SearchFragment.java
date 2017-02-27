@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.stevenzafrani.congregate.R;
 import com.example.stevenzafrani.congregate.canvas.AlgorithmSearchCanvas;
@@ -94,6 +95,16 @@ public class SearchFragment extends BaseFragment {
                 R.array.algorithm_search_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        runButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (searchType == 0 ) {
+                    Toast toast = Toast.makeText(view.getContext(),"Please select search type.", Toast.LENGTH_SHORT);
+                    toast.show();
+
+                }
+            }
+        });
     }
 
     @Override
