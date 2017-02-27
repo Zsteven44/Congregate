@@ -15,7 +15,6 @@ import android.widget.Spinner;
 import com.example.stevenzafrani.congregate.R;
 import com.example.stevenzafrani.congregate.canvas.AlgorithmSearchCanvas;
 import com.example.stevenzafrani.congregate.models.AlgorithmLogSearch;
-import com.example.stevenzafrani.congregate.models.AlgorithmLogSort;
 
 public class SearchFragment extends BaseFragment {
 
@@ -58,7 +57,8 @@ public class SearchFragment extends BaseFragment {
                 algorithmLog.clear();
                 switch (j) {
                     case 0:
-
+                        generateMyArray();
+                        setArrayData();
                         break;
                     case 1:
 
@@ -105,7 +105,9 @@ public class SearchFragment extends BaseFragment {
         AlgorithmLogSearch algorithmLogSearch;
     }
     private void setArrayData() {
-
+        /**
+         * Not currently using this, may be changed later if need arises for search functions.
+         */
     }
     private void generateMyArray() {
         for (int i=0; i<myArray.length; i++) {
