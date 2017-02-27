@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
@@ -21,9 +22,11 @@ public class SearchFragment extends BaseFragment {
     private int[] myArray;
     private int[] newArray;
     private int[] finishedArray;
+    private int searchType = 0;
     private boolean inProgress =false;
 
     private AlgorithmLogSearch algorithmLog;
+    private Button runButton;
     int i;
     private ImageView drawableCanvas;
     Handler handler = new Handler();
@@ -47,7 +50,7 @@ public class SearchFragment extends BaseFragment {
         algorithmLog = new AlgorithmLogSearch();
 
         drawableCanvas= (ImageView) getActivity().findViewById(R.id.imageView_algorithm_search);
-
+        runButton = (Button) getActivity().findViewById((R.id.button_run_algorithm_search));
         spinner.setSelection(1, false);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -59,21 +62,19 @@ public class SearchFragment extends BaseFragment {
                     case 0:
                         generateMyArray();
                         setArrayData();
+                        searchType=0;
                         break;
                     case 1:
-
+                        searchType=1;
                         break;
                     case 2:
-
+                        searchType=2;
                         break;
                     case 3:
-
+                        searchType=3;
                         break;
                     case 4:
-
-                        break;
-                    case 5:
-
+                        searchType=4;
                         break;
                     default:
                         break;
