@@ -21,8 +21,7 @@ import com.example.stevenzafrani.congregate.models.AlgorithmLogSearch;
 public class SearchFragment extends BaseFragment {
 
     private int[] myArray;
-    private int[] newArray;
-    private int[] finishedArray;
+
     private int searchType = 0;
     private boolean inProgress =false;
 
@@ -46,8 +45,7 @@ public class SearchFragment extends BaseFragment {
         super.onStart();
         final Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinner_algorithm_search);
         myArray = new int[20];
-        newArray = new int[20];
-        finishedArray = new int[20];
+
         algorithmLog = new AlgorithmLogSearch();
 
         drawableCanvas= (ImageView) getActivity().findViewById(R.id.imageView_algorithm_search);
@@ -57,7 +55,7 @@ public class SearchFragment extends BaseFragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
 
-                drawableCanvas.setImageDrawable(new AlgorithmSearchCanvas(myArray,newArray, finishedArray));
+                drawableCanvas.setImageDrawable(new AlgorithmSearchCanvas(myArray));
                 algorithmLog.clear();
                 switch (j) {
                     case 0:
@@ -118,8 +116,9 @@ public class SearchFragment extends BaseFragment {
     }
     private void setArrayData() {
         /**
-         * Not currently using this, may be changed later if need arises for search functions.
+         * Used to update Drawable canvas data to match generated array.
          */
+        drawableCanvas.setImageDrawable(new AlgorithmSearchCanvas(myArray));
     }
     private void generateMyArray() {
         for (int i=0; i<myArray.length; i++) {

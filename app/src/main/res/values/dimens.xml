@@ -3,4 +3,15 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="activity_standard_margin">16dp</dimen>
+
+    <!-- Pre-defined text sizes -->
+    <dimen name="ts_4">4dp</dimen>
+    <dimen name="ts_5">5dp</dimen>
+    <dimen name="ts_6">6dp</dimen>
+    <dimen name="ts_7">7dp</dimen>
+    <dimen name="ts_8">8dp</dimen>
+    <dimen name="ts_9">9dp</dimen>
+    <dimen name="ts_10">10dp</dimen>
+    <dimen name="ts_11">11dp</dimen>
+
 </resources>

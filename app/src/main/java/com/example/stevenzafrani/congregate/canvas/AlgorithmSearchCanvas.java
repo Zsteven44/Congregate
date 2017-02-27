@@ -17,11 +17,9 @@ public class AlgorithmSearchCanvas extends Drawable {
 
     private float scale = 0f; // something between 0 and 1
 
-    public AlgorithmSearchCanvas(int[] array, int[] array2, int[] array3) {
+    public AlgorithmSearchCanvas(int[] array) {
         this.size = array.length;
         this.valueArray = array;
-        this.changingArray = array2;
-        this.finishedArray = array3;
 
     }
 
@@ -48,25 +46,6 @@ public class AlgorithmSearchCanvas extends Drawable {
             canvas.drawText(Integer.toString(valueArray[i]),(rectWidth/2) + (i*rectWidth) - 6,(canvas.getHeight()/3) - 20,p);
         }
 
-        for (int i = 0; i < size; i++) {
-            canvas.drawRect(
-                    (rectSpacing/2) + (i*rectWidth),
-                    (2*canvas.getHeight()/3-40) - (changingArray[i]+25),
-                    (rectSpacing/2) + (i*rectWidth) + (rectWidth - (rectSpacing/2)),
-                    (2*canvas.getHeight()/3-40),
-                    p);
-            canvas.drawText(Integer.toString(changingArray[i]),(rectWidth/2) + (i*rectWidth) - 6,(2*canvas.getHeight()/3) - 20,p);
-        }
-
-        for (int i = 0; i < size; i++) {
-            canvas.drawRect(
-                    (rectSpacing/2) + (i*rectWidth),
-                    (canvas.getHeight() -40) - (finishedArray[i]+25),
-                    (rectSpacing/2) + (i*rectWidth) + (rectWidth - (rectSpacing/2)),
-                    (canvas.getHeight() - 40),
-                    p);
-            canvas.drawText(Integer.toString(finishedArray[i]),(rectWidth/2) + (i*rectWidth) - 6,(canvas.getHeight()) - 20,p);
-        }
 
 
 
