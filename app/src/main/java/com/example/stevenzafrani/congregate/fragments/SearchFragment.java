@@ -9,22 +9,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.stevenzafrani.congregate.R;
 import com.example.stevenzafrani.congregate.canvas.AlgorithmSearchCanvas;
 import com.example.stevenzafrani.congregate.models.AlgorithmLogSearch;
-import com.example.stevenzafrani.congregate.models.AlgorithmLogSort;
 
 public class SearchFragment extends BaseFragment {
 
     private int[] myArray;
-    private int[] newArray;
-    private int[] finishedArray;
+
+    private int searchType = 0;
     private boolean inProgress =false;
 
     private AlgorithmLogSearch algorithmLog;
+    private Button runButton;
     int i;
     private ImageView drawableCanvas;
     Handler handler = new Handler();
@@ -43,37 +45,35 @@ public class SearchFragment extends BaseFragment {
         super.onStart();
         final Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinner_algorithm_search);
         myArray = new int[20];
-        newArray = new int[20];
-        finishedArray = new int[20];
+
         algorithmLog = new AlgorithmLogSearch();
 
         drawableCanvas= (ImageView) getActivity().findViewById(R.id.imageView_algorithm_search);
-
+        runButton = (Button) getActivity().findViewById((R.id.button_run_algorithm_search));
         spinner.setSelection(1, false);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
 
-                drawableCanvas.setImageDrawable(new AlgorithmSearchCanvas(myArray,newArray, finishedArray));
+                drawableCanvas.setImageDrawable(new AlgorithmSearchCanvas(myArray));
                 algorithmLog.clear();
                 switch (j) {
                     case 0:
-
+                        generateMyArray();
+                        setArrayData();
+                        searchType=0;
                         break;
                     case 1:
-
+                        searchType=1;
                         break;
                     case 2:
-
+                        searchType=2;
                         break;
                     case 3:
-
+                        searchType=3;
                         break;
                     case 4:
-
-                        break;
-                    case 5:
-
+                        searchType=4;
                         break;
                     default:
                         break;
@@ -93,6 +93,16 @@ public class SearchFragment extends BaseFragment {
                 R.array.algorithm_search_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        runButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (searchType == 0 ) {
+                    Toast toast = Toast.makeText(view.getContext(),"Please select search type.", Toast.LENGTH_SHORT);
+                    toast.show();
+
+                }
+            }
+        });
     }
 
     @Override
@@ -105,7 +115,10 @@ public class SearchFragment extends BaseFragment {
         AlgorithmLogSearch algorithmLogSearch;
     }
     private void setArrayData() {
-
+        /**
+         * Used to update Drawable canvas data to match generated array.
+         */
+        drawableCanvas.setImageDrawable(new AlgorithmSearchCanvas(myArray));
     }
     private void generateMyArray() {
         for (int i=0; i<myArray.length; i++) {

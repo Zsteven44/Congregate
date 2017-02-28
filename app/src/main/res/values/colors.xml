@@ -13,12 +13,15 @@
     <color name="primaryWhite">#FFFFFF</color>
     <color name="primaryDarkGreen">#4CAF50</color>
     <color name="primaryLightGreen">#8BC34A</color>
+    <color name="primaryGray">#9E9E9E</color>
 
     <!-- Secondary Colors (700s) for other Themes (status bars) -->
 
 
 
     <!-- Tertiary Colors (300s) for other Themes (secondary information) -->
+
+    <color name="tertiaryGray">#E0E0E0</color>
 
     <!-- Accent Colors (A) for other objects (buttons, sliders, etc...) -->
     <color name="accentRed">#FF1744</color>
