@@ -96,9 +96,22 @@ public class SearchFragment extends BaseFragment {
         runButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (searchType == 0 ) {
-                    Toast toast = Toast.makeText(view.getContext(),"Please select search type.", Toast.LENGTH_SHORT);
-                    toast.show();
+                switch (searchType) {
+                    case 0:
+                        Toast toast = Toast.makeText(view.getContext(),"Please select search type.", Toast.LENGTH_SHORT);
+                        toast.show();
+                        break;
+                    case 1:
+
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        break;
 
                 }
             }
@@ -125,5 +138,7 @@ public class SearchFragment extends BaseFragment {
             myArray[i] = (int) (Math.random()*100);
         }
     }
+
+
 
 }
