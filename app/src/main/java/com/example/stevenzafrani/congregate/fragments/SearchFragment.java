@@ -10,23 +10,25 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.stevenzafrani.congregate.R;
+import com.example.stevenzafrani.congregate.algorithms.search.LinearSearch;
 import com.example.stevenzafrani.congregate.canvas.AlgorithmSearchCanvas;
 import com.example.stevenzafrani.congregate.models.AlgorithmLogSearch;
 
 public class SearchFragment extends BaseFragment {
 
     private int[] myArray;
-
     private int searchType = 0;
     private boolean inProgress =false;
-
     private AlgorithmLogSearch algorithmLog;
+
     private Button runButton;
+    private EditText editTextSearch;
     int i;
     private ImageView drawableCanvas;
     Handler handler = new Handler();
@@ -93,16 +95,24 @@ public class SearchFragment extends BaseFragment {
                 R.array.algorithm_search_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+        editTextSearch = (EditText) getActivity().findViewById(R.id.edit_text_search_value);
         runButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int value = getSearchValue();
+                if (value<0) {
+                    Toast toast = Toast.makeText(view.getContext(),"Please enter search value.", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                }
                 switch (searchType) {
                     case 0:
                         Toast toast = Toast.makeText(view.getContext(),"Please select search type.", Toast.LENGTH_SHORT);
                         toast.show();
                         break;
                     case 1:
-
+                        AlgorithmLogSearch algorithmLogSearch = new LinearSearch(getActivity(),myArray,Integer.getInteger(editTextSearch.toString())).getAlgorithmLog();
                         break;
                     case 2:
                         break;
@@ -112,7 +122,6 @@ public class SearchFragment extends BaseFragment {
                         break;
                     default:
                         break;
-
                 }
             }
         });
@@ -139,6 +148,14 @@ public class SearchFragment extends BaseFragment {
         }
     }
 
+    public int getSearchValue() {
 
+        String value = (editTextSearch.toString());
+        if (value == null || value.isEmpty() || value.length()==0 ){
+            return -1;
+        } else {
+            return Integer.getInteger(editTextSearch.toString());
+        }
+    }
 
 }
