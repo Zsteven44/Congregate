@@ -4,6 +4,7 @@ package com.example.stevenzafrani.congregate.fragments;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -101,6 +102,7 @@ public class SearchFragment extends BaseFragment {
             @Override
             public void onClick(View view) {
                 int value = getSearchValue();
+                algorithmLog.clear();
                 if (value<0) {
                     Toast toast = Toast.makeText(view.getContext(),"Please enter search value.", Toast.LENGTH_SHORT);
                     toast.show();
@@ -112,7 +114,7 @@ public class SearchFragment extends BaseFragment {
                         toast.show();
                         break;
                     case 1:
-                        AlgorithmLogSearch algorithmLogSearch = new LinearSearch(getActivity(),myArray,Integer.getInteger(editTextSearch.toString())).getAlgorithmLog();
+                        algorithmLog = new LinearSearch(getActivity(),myArray,value).getAlgorithmLog();
                         break;
                     case 2:
                         break;
@@ -123,6 +125,8 @@ public class SearchFragment extends BaseFragment {
                     default:
                         break;
                 }
+                spinner.setEnabled(false);
+                runSimulation(algorithmLog, spinner);
             }
         });
     }
@@ -133,8 +137,16 @@ public class SearchFragment extends BaseFragment {
 
     }
 
-    public void runSimulation() {
-        AlgorithmLogSearch algorithmLogSearch;
+    public void runSimulation(AlgorithmLogSearch algorithmLogSearch, Spinner spinner) {
+        i =0;
+        if (algorithmLogSearch.size()>0) {
+            final Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+
+                }
+            };
+        }
     }
     private void setArrayData() {
         /**
@@ -150,11 +162,12 @@ public class SearchFragment extends BaseFragment {
 
     public int getSearchValue() {
 
-        String value = (editTextSearch.toString());
+        String value = (editTextSearch.getText().toString());
+        Log.d(SearchFragment.class.getSimpleName(), "The search value is: " +value);
         if (value == null || value.isEmpty() || value.length()==0 ){
             return -1;
         } else {
-            return Integer.getInteger(editTextSearch.toString());
+            return Integer.parseInt(value);
         }
     }
 
