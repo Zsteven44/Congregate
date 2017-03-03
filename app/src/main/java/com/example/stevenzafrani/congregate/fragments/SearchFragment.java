@@ -137,15 +137,22 @@ public class SearchFragment extends BaseFragment {
 
     }
 
-    public void runSimulation(AlgorithmLogSearch algorithmLogSearch, Spinner spinner) {
+    public void runSimulation(final AlgorithmLogSearch algorithmLogSearch, final Spinner spinner) {
         i =0;
         if (algorithmLogSearch.size()>0) {
             final Runnable runnable = new Runnable() {
                 @Override
                 public void run() {
-                    drawableCanvas.setImageDrawable(new AlgorithmSearchCanvas(myArray));
+                    drawableCanvas.setImageDrawable(new AlgorithmSearchCanvas(myArray, algorithmLogSearch.get(i)));
+                    i++;
+                    if (i< algorithmLog.size()){
+                        handler.postDelayed(this,500);
+                    }else{
+                        spinner.setEnabled(true);
+                    }
                 }
             };
+            handler.post(runnable);
         }
     }
     private void setArrayData() {

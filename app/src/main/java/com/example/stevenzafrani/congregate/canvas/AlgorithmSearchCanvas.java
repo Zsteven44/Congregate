@@ -27,6 +27,8 @@ public class AlgorithmSearchCanvas extends Drawable {
     }
 
     public AlgorithmSearchCanvas(int[] array, AlgorithmPassSearch algorithmPassSearch) {
+        this.size = array.length;
+        this.valueArray = array;
         this.target = algorithmPassSearch.isTarget();
         this.currentIndex = algorithmPassSearch.getPassIndex();
         this.currentPass = algorithmPassSearch.getPassIndex();

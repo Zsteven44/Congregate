@@ -5,15 +5,21 @@ public class AlgorithmPassSearch {
     public int passIndex;
     public int passValue;
     public boolean target;
+    public int[] arrayValues;
 
-    public AlgorithmPassSearch(int passNumber, int index, int value, boolean target) {
+
+    public AlgorithmPassSearch(int passNumber, int index, int value, boolean target, int[] array) {
         this.passNumber = passNumber;
         this.passIndex = index;
         this.passValue = value;
         this.target = target;
+        this.arrayValues = array;
 
     }
 
+    public int[] getArrayValues() {
+        return arrayValues;
+    }
     public int getPassNumber() {
         return passNumber;
     }

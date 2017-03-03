@@ -26,11 +26,11 @@ public class LinearSearch extends BaseSearch {
         int size = array.length;
         for (int i = 0; i<size; i++) {
             if ((array[i]) == key) {
-                AlgorithmPassSearch algorithmPassSearch = new AlgorithmPassSearch(counter, i, array[i], true);
+                AlgorithmPassSearch algorithmPassSearch = new AlgorithmPassSearch(counter, i, array[i], true, array);
                 algorithmLog.add(algorithmPassSearch);
                 return i;
             }
-            AlgorithmPassSearch algorithmPassSearch = new AlgorithmPassSearch(counter, i, array[i], false);
+            AlgorithmPassSearch algorithmPassSearch = new AlgorithmPassSearch(counter, i, array[i], false,array);
             algorithmLog.add(algorithmPassSearch);
             counter++;
         }
