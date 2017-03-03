@@ -15,10 +15,7 @@ public class LinearSearch extends BaseSearch {
                         int[] array,
                         int key) {
         super(activity);
-
         performSearch(array, key);
-
-
     }
 
 

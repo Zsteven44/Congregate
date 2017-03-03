@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.stevenzafrani.congregate.R;
+import com.example.stevenzafrani.congregate.algorithms.search.BinarySearch;
 import com.example.stevenzafrani.congregate.algorithms.search.LinearSearch;
 import com.example.stevenzafrani.congregate.canvas.AlgorithmSearchCanvas;
 import com.example.stevenzafrani.congregate.models.AlgorithmLogSearch;
@@ -112,11 +113,12 @@ public class SearchFragment extends BaseFragment {
                     case 0:
                         Toast toast = Toast.makeText(view.getContext(),"Please select search type.", Toast.LENGTH_SHORT);
                         toast.show();
-                        break;
+                        return;
                     case 1:
                         algorithmLog = new LinearSearch(getActivity(),myArray,value).getAlgorithmLog();
                         break;
                     case 2:
+                        algorithmLog = new BinarySearch(getActivity(),myArray,value).getAlgorithmLog();
                         break;
                     case 3:
                         break;
@@ -163,7 +165,7 @@ public class SearchFragment extends BaseFragment {
     }
     private void generateMyArray() {
         for (int i=0; i<myArray.length; i++) {
-            myArray[i] = (int) (Math.random()*100);
+            myArray[i] = (int) ((Math.random()*3.5)+ i*4);
         }
     }
 

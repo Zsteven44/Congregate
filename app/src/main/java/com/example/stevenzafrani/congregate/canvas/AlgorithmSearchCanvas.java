@@ -14,8 +14,8 @@ import com.example.stevenzafrani.congregate.models.AlgorithmPassSearch;
 public class AlgorithmSearchCanvas extends Drawable {
     private int size;
     private int valueArray[];
-    private int currentIndex;
-    private int currentPass;
+    private int currentIndex = -1;
+    private int currentPass = -1;
     private boolean target;
 
     private float scale = 0f; // something between 0 and 1
