@@ -143,7 +143,7 @@ public class SearchFragment extends BaseFragment {
             final Runnable runnable = new Runnable() {
                 @Override
                 public void run() {
-
+                    drawableCanvas.setImageDrawable(new AlgorithmSearchCanvas(myArray));
                 }
             };
         }
