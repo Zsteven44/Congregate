@@ -73,12 +73,7 @@ public class SearchFragment extends BaseFragment {
                     case 2:
                         searchType=2;
                         break;
-                    case 3:
-                        searchType=3;
-                        break;
-                    case 4:
-                        searchType=4;
-                        break;
+
                     default:
                         break;
                 }
@@ -120,10 +115,7 @@ public class SearchFragment extends BaseFragment {
                     case 2:
                         algorithmLog = new BinarySearch(getActivity(),myArray,value).getAlgorithmLog();
                         break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
+
                     default:
                         break;
                 }
@@ -158,9 +150,7 @@ public class SearchFragment extends BaseFragment {
         }
     }
     private void setArrayData() {
-        /**
-         * Used to update Drawable canvas data to match generated array.
-         */
+
         drawableCanvas.setImageDrawable(new AlgorithmSearchCanvas(myArray));
     }
     private void generateMyArray() {

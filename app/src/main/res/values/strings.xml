@@ -36,8 +36,6 @@
         <item>None</item>
         <item>Linear Search</item>
         <item>Binary Search</item>
-        <item>Tree Search</item>
-        <item>Genetic Search</item>
     </string-array>
 
 
